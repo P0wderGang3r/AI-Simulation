@@ -1,4 +1,4 @@
-package neural_network.enums
+package global_NN.enums
 
 enum class ErrorType {
     IOError {

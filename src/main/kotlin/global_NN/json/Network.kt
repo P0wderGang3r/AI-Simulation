@@ -1,4 +1,4 @@
-package neural_network.json
+package global_NN.json
 
 import kotlinx.serialization.Serializable
 

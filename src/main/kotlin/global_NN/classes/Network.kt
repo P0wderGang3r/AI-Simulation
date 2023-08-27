@@ -1,14 +1,15 @@
-package neural_network.classes
+package global_NN.classes
 
 import jsonParser
 import kotlinx.serialization.decodeFromString
 import logs
-import neural_network.enums.ActivationFunction
-import neural_network.enums.ErrorType
-import neural_network.json.Network
+import global_NN.enums.ActivationFunction
+import global_NN.enums.ErrorType
+import global_NN.json.Network
 import java.io.File
 
 class Network {
+    private var name = ""
     private val network = ArrayList<ArrayList<Neuron>>()
 
     private fun fileParser(path: String): ErrorType {
@@ -45,13 +46,15 @@ class Network {
         return result
     }
 
-    private fun activationParser(activation: String): ActivationFunction {
+    private fun activationParser(
+        activation: String
+        ): ActivationFunction {
+
         return when (activation) {
             "none" -> ActivationFunction.NONE
             "threshold" -> ActivationFunction.THRESHOLD
             else -> ActivationFunction.NONE
         }
-
     }
 
     fun genNeuralNetwork(path: String): ErrorType {
@@ -59,6 +62,8 @@ class Network {
 
         if (parseResult != ErrorType.OK)
             return parseResult
+
+        name = path
 
         val networkJSON = parseResult.data as Network
 
@@ -80,12 +85,12 @@ class Network {
                     for (synapse in neuronJSON.synapses) {
                         //Проходимся по всем индексам нейронов в следующем слое
                         for (neuronPrevLayerJSON in network[layerIndex - 1])
-                        //Если есть такой нейрон, синапс для которого было определён,то ...
-                            if (neuronPrevLayerJSON.getNumber() == synapse)
+                            //Если есть такой нейрон по номеру, синапс для которого было определён,то ...
+                            if (neuronPrevLayerJSON.getName() == synapse)
                             //... создаём синапс на основе данных, прочитанных из файла
                                 synapses.add(
                                     Synapse(
-                                        network[layerIndex - 1][synapse],
+                                        neuronPrevLayerJSON,
                                         weight = weight
                                     )
                                 )
@@ -95,9 +100,12 @@ class Network {
                 //Создаём нейрон
                 network[layerIndex].add(
                     Neuron(
-                        activationParser(neuronJSON.activation),
+                        neuronJSON.name,
                         synapses.toTypedArray(),
-                        neuronNumber = neuronJSON.number
+                        activationParser(
+                            neuronJSON.activation
+                        ),
+                        neuronJSON.parameters
                     )
                 )
 
@@ -112,15 +120,23 @@ class Network {
     }
 
     fun printNetwork() {
-        println("___/Network DATA\\___")
+        var amount = 0
+        val header = "___/ Network: \"$name\" \\___"
+
+        println(header)
         for (layer in network) {
             for (neuron in layer) {
-                print("|-> ${neuron.getNumber()} - ${neuron.getActivationFunction()} - ")
+                amount++
+                print("|-> ${neuron.getName()} - ${neuron.getActivationFunction()} ( ")
+                for (parameter in neuron.getActivationParameters()) print("$parameter")
+                print(" ) - ")
                 for (synapse in neuron.getSynapses()) print("[ $synapse ]")
                 if (neuron.getSynapses().size == 0) print("NO SYNAPSES")
                 print("\n")
             }
-            println("--------------------")
+            for (length in 0 until header.count()) print("-")
+            println()
         }
+        println("Neuron amount: $amount\n")
     }
 }

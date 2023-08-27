@@ -1,0 +1,184 @@
+{
+  "layers": [
+    [
+      {
+        "name" : "man_0001",
+        "synapses": [],
+        "activation": "none",
+        "parameters": []
+      },
+      {
+        "name" : "man_0010",
+        "synapses": [],
+        "activation": "none",
+        "parameters": []
+      },
+      {
+        "name" : "man_0100",
+        "synapses": [],
+        "activation": "none",
+        "parameters": []
+      },
+      {
+        "name" : "man_1000",
+        "synapses": [],
+        "activation": "none",
+        "parameters": []
+      },
+      {
+        "name" : "temp_0001",
+        "synapses": [],
+        "activation": "none",
+        "parameters": []
+      },
+      {
+        "name" : "temp_0010",
+        "synapses": [],
+        "activation": "none",
+        "parameters": []
+      },
+      {
+        "name" : "temp_0100",
+        "synapses": [],
+        "activation": "none",
+        "parameters": []
+      },
+      {
+        "name" : "temp_1000",
+        "synapses": [],
+        "activation": "none",
+        "parameters": []
+      },
+      {
+        "name" : "req_mode_01",
+        "synapses": [],
+        "activation": "none",
+        "parameters": []
+      },
+      {
+        "name" : "req_mode_10",
+        "synapses": [],
+        "activation": "none",
+        "parameters": []
+      }
+    ],
+    [
+      {
+        "name" : "temp_0001",
+        "synapses": ["temp_0001"],
+        "activation": "none",
+        "parameters": []
+      },
+      {
+        "name" : "temp_0010",
+        "synapses": ["temp_0010"],
+        "activation": "none",
+        "parameters": []
+      },
+      {
+        "name" : "temp_0100",
+        "synapses": ["temp_0100"],
+        "activation": "none",
+        "parameters": []
+      },
+      {
+        "name" : "temp_1000",
+        "synapses": ["temp_1000"],
+        "activation": "none",
+        "parameters": []
+      },
+      {
+        "name" : "man_mode_01",
+        "synapses": [
+          "req_mode_01",
+          "man_0001",
+          "man_0010",
+          "man_0100",
+          "man_1000"
+        ],
+        "activation": "threshold",
+        "parameters": [0.5]
+      },
+      {
+        "name" : "man_mode_10",
+        "synapses": [
+          "req_mode_10",
+          "man_0001",
+          "man_0010",
+          "man_0100",
+          "man_1000"
+        ],
+        "activation": "threshold",
+        "parameters": [0.5]
+      },
+      {
+        "name" : "temp_mode_01",
+        "synapses": [
+          "req_mode_01",
+          "temp_0001",
+          "temp_0010",
+          "temp_0100",
+          "temp_1000"
+        ],
+        "activation": "threshold",
+        "parameters": [0.5]
+      },
+      {
+        "name" : "temp_mode_10",
+        "synapses": [
+          "req_mode_10",
+          "temp_0001",
+          "temp_0010",
+          "temp_0100",
+          "temp_1000"
+        ],
+        "activation": "threshold",
+        "parameters": [0.5]
+      }
+    ],
+    [
+      {
+        "name" : "temp_0001",
+        "synapses": ["temp_0001"],
+        "activation": "none",
+        "parameters": []
+      },
+      {
+        "name" : "temp_0010",
+        "synapses": ["temp_0010"],
+        "activation": "none",
+        "parameters": []
+      },
+      {
+        "name" : "temp_0100",
+        "synapses": ["temp_0100"],
+        "activation": "none",
+        "parameters": []
+      },
+      {
+        "name" : "temp_1000",
+        "synapses": ["temp_1000"],
+        "activation": "none",
+        "parameters": []
+      },
+      {
+        "name" : "res_mode_01",
+        "synapses": [
+          "man_mode_01",
+          "temp_mode_01"
+        ],
+        "activation": "none",
+        "parameters": []
+      },
+      {
+        "name" : "res_mode_10",
+        "synapses": [
+          "man_mode_10",
+          "temp_mode_10"
+        ],
+        "activation": "none",
+        "parameters": []
+      }
+    ]
+  ]
+}

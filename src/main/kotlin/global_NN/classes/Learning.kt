@@ -1,4 +1,4 @@
-package neural_network.classes
+package global_NN.classes
 
 class Learning {
     fun importWeights(path: String, network: Network) {

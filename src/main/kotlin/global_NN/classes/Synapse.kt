@@ -1,4 +1,4 @@
-package neural_network.classes
+package global_NN.classes
 
 class Synapse(
     private val netElement: Neuron,
@@ -8,7 +8,7 @@ class Synapse(
         return netElement.pushSignal()
     }
 
-    fun getNetElementNumber(): Int {
-        return netElement.getNumber()
+    fun getNetElementNumber(): String {
+        return netElement.getName()
     }
 }

@@ -1,4 +1,5 @@
-import neural_network.classes.Network
+import global_NN.classes.Network
+import simulation.Simulation
 
 fun main(args: Array<String>) {
     var path: String = ""
@@ -13,10 +14,20 @@ fun main(args: Array<String>) {
     // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
     println("Args: ${args.joinToString()}\n")
 
-    val network = Network()
+    val globalNN = Network()
 
-    network.genNeuralNetwork(path)
-    network.printNetwork()
+    globalNN.genNeuralNetwork(path)
+    globalNN.printNetwork()
+
+    val roomFirstNN = Network()
+
+    roomFirstNN.genNeuralNetwork("data/room_first_NN.json")
+    roomFirstNN.printNetwork()
+
+    val simulation = Simulation()
+    Thread(simulation).start()
+    simulation.requestRun()
+
 }
 
 //TODO: Функции активации
