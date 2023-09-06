@@ -1,6 +1,6 @@
-package simulation
+package runtime
 
-enum class SimState {
+enum class RuntimeState {
     RUNNING,
     READY,
     RESET,

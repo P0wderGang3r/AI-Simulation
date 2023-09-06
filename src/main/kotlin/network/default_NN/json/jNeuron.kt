@@ -1,9 +1,9 @@
-package global_NN.json
+package network.default_NN.json
 
 import kotlinx.serialization.Serializable
 
 @Serializable
-class Neuron (
+class jNeuron (
     val name: String,
     val synapses: Array<String>,
     val activation: String,

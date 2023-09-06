@@ -1,5 +1,5 @@
-import global_NN.classes.Network
-import simulation.Simulation
+import network.default_NN.classes.Network
+import runtime.Runtime
 
 fun main(args: Array<String>) {
     var path: String = ""
@@ -16,7 +16,7 @@ fun main(args: Array<String>) {
 
     val globalNN = Network()
 
-    globalNN.genNeuralNetwork(path)
+    globalNN.genNeuralNetwork("data/global_NN.json")
     globalNN.printNetwork()
 
     val roomFirstNN = Network()
@@ -24,14 +24,48 @@ fun main(args: Array<String>) {
     roomFirstNN.genNeuralNetwork("data/room_first_NN.json")
     roomFirstNN.printNetwork()
 
-    val simulation = Simulation()
-    Thread(simulation).start()
-    simulation.requestRun()
+    val runtime = Runtime()
+    Thread(runtime).start()
+    runtime.requestRun()
 
 }
 
-//TODO: Функции активации
+//TODO: -> Планировка здания
+//TODO: -> Изменение координат комнат
+//TODO: -> Объединение комнат между собой (тайлы?)
+
+//TODO: -> Условия окружающей среды
+
+//TODO: -> Написать алгоритм парсинга дома
+//TODO: -> Написать алгоритм парсинга температуры
+//TODO: -> Написать алгоритм парсинга окружения
+
+//TODO: Разработать алгоритмы поведения устройств
+//TODO: -> Считывание данных об окружающей среде
+//TODO: -> Разработка алгоритмов влияния на окружающую среду
+
+//TODO: Структура глобальной нейронной сети
+
+//TODO: Разработать алгоритмы поведения людей
+//TODO: -> Разработка карты перемещений
+//TODO: -> Разработка алгоритма поиска кратчайшего пути (с элементами случайности)
+//TODO: -> Разработка распорядка дня
+//TODO: -> Нейронная сеть ?????
+
 //TODO: Обучение нейронной сети
-//TODO: Спецификация входных данных нейронной сети
-//TODO: Возможность импорта весов
-//TODO: Возможность экспорта весов
+
+//TODO: графический вывод информации
+//TODO: opengl / vulkan
+//TODO: -> отрисовка треугольника
+//TODO: -> отрисовка текстуры треугольника
+//TODO: -> отрисовка конвейера объектов
+//TODO: -> органы управления камерой в трёхмерной сцене
+//TODO: -> определение нажатия по области сцены
+//TODO: -> определение направления обзора
+//TODO: -> скрытие объектов при определённых углах обзора
+
+//TODO: Доделать комнаты, разнообразить комнаты
+
+//TODO: -> модели
+//TODO: -> текстуры
+//TODO: -> ...

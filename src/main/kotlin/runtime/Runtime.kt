@@ -1,38 +1,38 @@
-package simulation
+package runtime
 
-class Simulation: Runnable {
+class Runtime: Runnable {
 
-    private val simParams: SimParams = SimParams()
+    private val runtimeParams: RuntimeParams = RuntimeParams()
 
-    fun getSimParams(): SimParams = simParams
+    fun getSimParams(): RuntimeParams = runtimeParams
 
     /**
      * Состояние потока симуляции
      */
-    private var simState: SimState = SimState.PAUSE
+    private var runtimeState: RuntimeState = RuntimeState.PAUSE
 
     /**
      * GETTER, возвращающий текущее состояние симуляции
      */
-    fun getSimState(): SimState = simState
+    fun getSimState(): RuntimeState = runtimeState
 
     /**
      * Запрос полной остановки работы потока симуляции
      */
     fun requestStop() {
-        simState = SimState.STOP
+        runtimeState = RuntimeState.STOP
     }
 
     /**
      * Запрос продолжения работы симуляции
      */
     fun requestRun() {
-        simState = when (simState) {
-            SimState.STOP -> return
-            SimState.RUNNING -> simState
-            SimState.RESET -> simState
+        runtimeState = when (runtimeState) {
+            RuntimeState.STOP -> return
+            RuntimeState.RUNNING -> runtimeState
+            RuntimeState.RESET -> runtimeState
 
-            else -> SimState.READY
+            else -> RuntimeState.READY
         }
     }
 
@@ -40,11 +40,11 @@ class Simulation: Runnable {
      * Запрос временной приостановки работы симуляции
      */
     fun requestPause() {
-        simState = when (simState) {
-            SimState.STOP -> return
-            SimState.RESET -> simState
+        runtimeState = when (runtimeState) {
+            RuntimeState.STOP -> return
+            RuntimeState.RESET -> runtimeState
 
-            else -> SimState.PAUSE
+            else -> RuntimeState.PAUSE
         }
     }
 
@@ -52,10 +52,10 @@ class Simulation: Runnable {
      * Запрос сброса накопленных данных во время работы симуляции
      */
     fun requestReset() {
-        simState = when (simState) {
-            SimState.STOP -> return
+        runtimeState = when (runtimeState) {
+            RuntimeState.STOP -> return
 
-            else -> SimState.RESET
+            else -> RuntimeState.RESET
         }
     }
 
@@ -72,10 +72,10 @@ class Simulation: Runnable {
     private fun nextTick() = Runnable {
         println("WORK TICK")
 
-        simState = when (simState) {
-            SimState.RUNNING -> SimState.READY
+        runtimeState = when (runtimeState) {
+            RuntimeState.RUNNING -> RuntimeState.READY
 
-            else -> simState
+            else -> runtimeState
         }
     }
 
@@ -83,18 +83,18 @@ class Simulation: Runnable {
      * Основной цикл работы симуляции
      */
     override fun run() {
-        while (simState != SimState.STOP) {
-            when (simState) {
-                SimState.STOP -> return
-                SimState.RESET -> resetSimulation()
-                SimState.READY -> {
-                    simState = SimState.RUNNING
+        while (runtimeState != RuntimeState.STOP) {
+            when (runtimeState) {
+                RuntimeState.STOP -> return
+                RuntimeState.RESET -> resetSimulation()
+                RuntimeState.READY -> {
+                    runtimeState = RuntimeState.RUNNING
                     Thread(nextTick()).start()
                 }
 
                 else -> {}
             }
-            Thread.sleep(simParams.getSimTickDelay())
+            Thread.sleep(runtimeParams.getSimTickDelay())
         }
     }
 

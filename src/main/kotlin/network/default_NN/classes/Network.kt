@@ -1,11 +1,11 @@
-package global_NN.classes
+package network.default_NN.classes
 
 import jsonParser
 import kotlinx.serialization.decodeFromString
 import logs
-import global_NN.enums.ActivationFunction
-import global_NN.enums.ErrorType
-import global_NN.json.Network
+import network.default_NN.enums.ActivationFunction
+import network.default_NN.enums.ErrorType
+import network.default_NN.json.jNetwork
 import java.io.File
 
 class Network {
@@ -22,16 +22,16 @@ class Network {
             return ErrorType.IOError
         }
 
-        val networkDesc: Network
+        val jNetworkDesc: jNetwork
         try {
-            networkDesc = jsonParser.decodeFromString(jsonText)
+            jNetworkDesc = jsonParser.decodeFromString(jsonText)
         } catch (e: Exception) {
             return ErrorType.ParseError
         }
 
         if (logs[0]) {
             println("____/Input JSON\\____")
-            for (layer in networkDesc.layers) {
+            for (layer in jNetworkDesc.layers) {
                 for (neuron in layer) {
                     print("|-> ${neuron.activation} : [ ")
                     for (synapse in neuron.synapses) print("$synapse ")
@@ -42,7 +42,7 @@ class Network {
         }
 
         val result = ErrorType.OK
-        result.data = networkDesc
+        result.data = jNetworkDesc
         return result
     }
 
@@ -65,17 +65,17 @@ class Network {
 
         name = path
 
-        val networkJSON = parseResult.data as Network
+        val jNetworkJSON = parseResult.data as jNetwork
 
-        for (layer in 0 until networkJSON.layers.size)
+        for (layer in 0 until jNetworkJSON.layers.size)
             network.add(ArrayList())
 
         //Проходимся от первого до последнего слоя НС
-        for (layerIndex in 0 until networkJSON.layers.size) {
+        for (layerIndex in 0 until jNetworkJSON.layers.size) {
             //Для каждого нейрона в слое выполняем некоторые действия
-            for (neuronJSON in networkJSON.layers[layerIndex]) {
+            for (neuronJSON in jNetworkJSON.layers[layerIndex]) {
                 //Создаём множество синапсов
-                val synapses = ArrayList<Synapse>(networkJSON.layers.size)
+                val synapses = ArrayList<Synapse>(jNetworkJSON.layers.size)
 
                 //Если слой не первый, то создаём соединения
                 if (layerIndex > 0) {

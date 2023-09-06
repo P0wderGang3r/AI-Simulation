@@ -1,4 +1,4 @@
-package global_NN.classes
+package network.default_NN.classes
 
 class Synapse(
     private val netElement: Neuron,

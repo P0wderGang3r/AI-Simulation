@@ -1,0 +1,19 @@
+{
+  "header": "default",
+  "days": [
+    {
+      "temperatures": [
+        {
+          "hours": 0,
+          "minutes": 0,
+          "temperature": 30
+        },
+        {
+          "hours": 12,
+          "minutes": 0,
+          "temperature": 30
+        }
+      ]
+    }
+  ]
+}
