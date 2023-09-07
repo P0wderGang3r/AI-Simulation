@@ -9,7 +9,7 @@ import network.default_NN.json.jNetwork
 import java.io.File
 
 class Network {
-    private var name = ""
+    private var header = ""
     private val network = ArrayList<ArrayList<Neuron>>()
 
     private fun fileParser(path: String): ErrorType {
@@ -63,9 +63,9 @@ class Network {
         if (parseResult != ErrorType.OK)
             return parseResult
 
-        name = path
-
         val jNetworkJSON = parseResult.data as jNetwork
+
+        header = jNetworkJSON.header
 
         for (layer in 0 until jNetworkJSON.layers.size)
             network.add(ArrayList())
@@ -121,7 +121,7 @@ class Network {
 
     fun printNetwork() {
         var amount = 0
-        val header = "___/ Network: \"$name\" \\___"
+        val header = "___/ Network: \"$header\" \\___"
 
         println(header)
         for (layer in network) {

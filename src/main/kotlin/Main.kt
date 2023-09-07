@@ -14,15 +14,17 @@ fun main(args: Array<String>) {
     // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
     println("Args: ${args.joinToString()}\n")
 
+    /*
     val globalNN = Network()
 
-    globalNN.genNeuralNetwork("data/global_NN.json")
+    globalNN.genNeuralNetwork("./data/house_first/NN_global.json")
     globalNN.printNetwork()
 
     val roomFirstNN = Network()
 
-    roomFirstNN.genNeuralNetwork("data/room_first_NN.json")
+    roomFirstNN.genNeuralNetwork("./data/house_first/NN_room.json")
     roomFirstNN.printNetwork()
+     */
 
     val runtime = Runtime()
     Thread(runtime).start()
@@ -30,15 +32,11 @@ fun main(args: Array<String>) {
 
 }
 
-//TODO: -> Планировка здания
-//TODO: -> Изменение координат комнат
-//TODO: -> Объединение комнат между собой (тайлы?)
-
-//TODO: -> Условия окружающей среды
-
-//TODO: -> Написать алгоритм парсинга дома
-//TODO: -> Написать алгоритм парсинга температуры
 //TODO: -> Написать алгоритм парсинга окружения
+//TODO: -> Написать алгоритм парсинга комнат
+//TODO: -> Написать алгоритм парсинга погоды
+
+//TODO: -> Исправить ошибку конференции ErrorType
 
 //TODO: Разработать алгоритмы поведения устройств
 //TODO: -> Считывание данных об окружающей среде

@@ -1,7 +1,7 @@
 package runtime
 
 class RuntimeParams {
-    private var simTickDelay: Long = 10
+    private var simTickDelay: Long = 1000
 
     fun getSimTickDelay(): Long = simTickDelay
 

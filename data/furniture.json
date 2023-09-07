@@ -1,0 +1,12 @@
+{
+  "header": "default",
+  "furniture": [
+    {
+      "name": "Тестовая мебель",
+      "furniture_type": "test",
+      "size_X": 1,
+      "size_Y": 1,
+      "model": "test.mdl"
+    }
+  ]
+}

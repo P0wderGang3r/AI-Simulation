@@ -1,7 +1,7 @@
 {
   "header": "default",
-  "path_temperatures": "./data/temperature.json",
+  "path_temperatures": "weather.json",
   "houses": [
-    "./data/house_first/house.json"
+    "house_first"
   ]
 }

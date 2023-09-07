@@ -4,49 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0370ea2-0878-430f-85d0-6ceae01546e4" name="Changes" comment="Simulation base + NN minor changes">
-      <change afterPath="$PROJECT_DIR$/data/house_first/house.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/outdoor.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/rooms.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/weather.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/JSON/JSON House.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/JSON/JSON Outdoor.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/JSON/JSON Room.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/JSON/JSON Weather.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/Device.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/Floor.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/House.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/Room.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jDevice.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jHouse.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jRoom.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/ChangeFunction.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/Day.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/Outdoor.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/Temperature.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/json/jDay.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/json/jOutdoor.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/json/jTemperature.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/json/jWeather.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/runtime/RuntimeParams.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="e0370ea2-0878-430f-85d0-6ceae01546e4" name="Changes" comment="Stashing all changes">
+      <change afterPath="$PROJECT_DIR$/data/furniture.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/JSON/JSON Furniture.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/Furniture.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/global_NN.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/house_first/NN_global.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/room_first_NN.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/house_first/NN_first.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/Json NN desc.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/JSON/JSON NN.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/house_first/house.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/house_first/house.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/outdoor.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/outdoor.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/rooms.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/rooms.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/JSON/JSON House.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/JSON/JSON House.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/JSON/JSON Room.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/JSON/JSON Room.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/global_NN/classes/Learning.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/network/default_NN/classes/Learning.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/global_NN/classes/Network.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/network/default_NN/classes/Network.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/global_NN/classes/Neuron.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/network/default_NN/classes/Neuron.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/global_NN/classes/Synapse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/network/default_NN/classes/Synapse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/global_NN/enums/ActivationFunction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/network/default_NN/enums/ActivationFunction.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/global_NN/enums/ErrorType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/network/default_NN/enums/ErrorType.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/global_NN/json/Network.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/network/default_NN/json/jNetwork.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/global_NN/json/Neuron.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/network/default_NN/json/jNeuron.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/simulation/SimParams.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/simulation/SimState.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/runtime/RuntimeState.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/simulation/Simulation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/runtime/Runtime.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/House.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/House.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/Room.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/Room.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jHouse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jHouse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jRoom.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jRoom.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/Outdoor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/Outdoor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/network/default_NN/classes/Network.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/network/default_NN/classes/Network.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/network/default_NN/json/jNetwork.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/network/default_NN/json/jNetwork.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/runtime/RuntimeParams.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/runtime/RuntimeParams.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,6 +78,7 @@
       <recent name="$PROJECT_DIR$/data/houses/house_1" />
     </key>
     <key name="CreateKotlinClassDialog.RecentsKey">
+      <recent name="environment.backrooms.classes" />
       <recent name="neural_network.classes" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
@@ -154,12 +131,20 @@
       <option name="project" value="LOCAL" />
       <updated>1693133253137</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Stashing all changes">
+      <created>1694003888692</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1694003888692</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Default description of neural network" />
     <MESSAGE value="Simulation base + NN minor changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Simulation base + NN minor changes" />
+    <MESSAGE value="Stashing all changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Stashing all changes" />
   </component>
 </project>

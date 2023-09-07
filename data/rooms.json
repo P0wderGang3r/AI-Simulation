@@ -2,12 +2,14 @@
   "header": "default",
   "rooms": [
     {
+      "name": "Пустая комната",
       "room_type": "empty",
       "size_X": 2,
       "size_Y": 3,
       "furniture": []
     },
     {
+      "name": "Зал",
       "room_type": "hall",
       "size_X": 2,
       "size_Y": 5,
@@ -16,11 +18,12 @@
           "furniture_type": "test",
           "coord_X": 0,
           "coord_Y": 0,
-          "rotation": 45
+          "rotation": 0
         }
       ]
     },
     {
+      "name": "Спальня",
       "room_type": "bedroom",
       "size_X": 3,
       "size_Y": 5,
@@ -29,9 +32,16 @@
           "furniture_type": "test",
           "coord_X": 0,
           "coord_Y": 0,
-          "rotation": 45
+          "rotation": 0
         }
       ]
+    },
+    {
+      "name": "Лестница",
+      "room_type": "ladder",
+      "size_X": 1,
+      "size_Y": 1,
+      "furniture": [ ]
     }
   ]
 }

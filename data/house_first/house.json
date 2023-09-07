@@ -1,16 +1,17 @@
 {
   "header": "home sweet home",
-  "description": "at least until ...",
-  "path_NN": "./data/house_first/NN_global.json",
+  "path_NN": "NN_global.json",
   "floors": [
     [
       {
         "name": "hall",
-        "description": "description",
         "room_type": "hall",
         "coord_X": 0,
         "coord_Y": 0,
-        "path_NN": "./data/house_first/NN_first.json",
+        "path_NN": "NN_first.json",
+        "connections": [
+          "kitchen"
+        ],
         "devices": [
           {
             "device_type": "counter"
@@ -25,11 +26,13 @@
       },
       {
         "name": "kitchen",
-        "description": "description",
         "room_type": "kitchen",
         "coord_X": 5,
         "coord_Y": 0,
-        "path_NN": "./data/house_first/NN_first.json",
+        "path_NN": "NN_first.json",
+        "connections": [
+          "hall"
+        ],
         "devices": [
           {
             "device_type": "counter"
@@ -41,16 +44,29 @@
             "device_type": "conditioner"
           }
         ]
+      },
+      {
+        "name": "ladder_1",
+        "room_type": "ladder",
+        "coord_X": -1,
+        "coord_Y": 0,
+        "path_NN": "NN_first.json",
+        "connections": [
+          "ladder_2"
+        ],
+        "devices": [ ]
       }
     ],
     [
       {
         "name": "bedroom_1",
-        "description": "description",
         "room_type": "bedroom",
         "coord_X": 0,
         "coord_Y": 0,
-        "path_NN": "./data/house_first/NN_first.json",
+        "path_NN": "NN_first.json",
+        "connections": [
+          "bedroom_2"
+        ],
         "devices": [
           {
             "device_type": "counter"
@@ -65,11 +81,13 @@
       },
       {
         "name": "bedroom_2",
-        "description": "description",
         "room_type": "bedroom",
         "coord_X": 5,
         "coord_Y": 0,
-        "path_NN": "./data/house_first/NN_first.json",
+        "path_NN": "NN_first.json",
+        "connections": [
+          "bedroom_1"
+        ],
         "devices": [
           {
             "device_type": "counter"
@@ -81,6 +99,17 @@
             "device_type": "conditioner"
           }
         ]
+      },
+      {
+        "name": "ladder_2",
+        "room_type": "ladder",
+        "coord_X": -1,
+        "coord_Y": 0,
+        "path_NN": "NN_first.json",
+        "connections": [
+          "ladder_1"
+        ],
+        "devices": [ ]
       }
     ]
   ]
