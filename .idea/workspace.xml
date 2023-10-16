@@ -4,25 +4,54 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0370ea2-0878-430f-85d0-6ceae01546e4" name="Changes" comment="Stashing all changes">
-      <change afterPath="$PROJECT_DIR$/data/furniture.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/JSON/JSON Furniture.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/Furniture.kt" afterDir="false" />
+    <list default="true" id="e0370ea2-0878-430f-85d0-6ceae01546e4" name="Changes" comment="Stashing all changes: парсинг окружения, комнат + описание мебели">
+      <change afterPath="$PROJECT_DIR$/data/maps/test_map/assets.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/maps/test_map/lightSources/lightPositions.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/maps/test_map/lightSources/lightRadiuses.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/maps/test_map/lightSources/lightSpeeds.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/maps/test_map/map.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/maps/test_map/map2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/models/cone.model" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/models/cuboid.model" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/models/cuboid2.model" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/models/cylinder.model" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/models/platform.model" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/models/prism.model" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/textures/defaulttex.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/textures/groundtex.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/textures/hometex.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/textures/leavestex.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/textures/rooftex.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/textures/woodtex.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/Kotlin/KT House.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/SceneGlobals.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/SceneLoop.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/SceneMemory.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/WindowInitializer.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/json/jAssets.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/json/jMap.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/json/jModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/json/jObjects.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/json/jParameters.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/json/jTexture.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/primitives/ComplexModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/primitives/Model.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/primitives/Texture.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/sceneComputations/MapMovement.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/sceneComputations/MapResize.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/sceneComputations/MapRotation.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/sceneInitializers/SceneController.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/sceneInitializers/bindTextures.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/sceneInitializers/initAssets.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/sceneInitializers/initMap.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/house_first/house.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/house_first/house.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/outdoor.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/outdoor.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/rooms.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/rooms.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/documentation/JSON/JSON House.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/JSON/JSON House.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/JSON/JSON Room.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/JSON/JSON Room.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/House.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/House.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/Room.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/Room.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jHouse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jHouse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jRoom.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jRoom.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/Outdoor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/Outdoor.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/network/default_NN/classes/Network.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/network/default_NN/classes/Network.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/network/default_NN/json/jNetwork.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/network/default_NN/json/jNetwork.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/runtime/RuntimeParams.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/runtime/RuntimeParams.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,12 +67,15 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin File" />
-        <option value="Class" />
         <option value="Kotlin Interface" />
         <option value="Kotlin Enum" />
+        <option value="Class" />
         <option value="Kotlin Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="nqk0skqd" />
@@ -54,22 +86,36 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2SxhH6qu0njyvnutGTixtXeF1nw" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/home/anasko/github-projects/kotlin/AI_Lab/data/maps/test_map",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.43678162",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data/maps/test_map" />
+      <recent name="$PROJECT_DIR$/data" />
+      <recent name="$PROJECT_DIR$/src/main/kotlin" />
+      <recent name="$PROJECT_DIR$/src/main/kotlin/renderer" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/data/house_first" />
       <recent name="$PROJECT_DIR$/documentation/JSON" />
@@ -138,13 +184,25 @@
       <option name="project" value="LOCAL" />
       <updated>1694003888692</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Stashing all changes: парсинг окружения, комнат + описание мебели">
+      <created>1694111773060</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1694111773060</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Default description of neural network" />
     <MESSAGE value="Simulation base + NN minor changes" />
     <MESSAGE value="Stashing all changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Stashing all changes" />
+    <MESSAGE value="Stashing all changes: парсинг окружения, комнат + описание мебели" />
+    <option name="LAST_COMMIT_MESSAGE" value="Stashing all changes: парсинг окружения, комнат + описание мебели" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

@@ -1,4 +1,4 @@
-import network.default_NN.classes.Network
+import renderer.WindowInitializer
 import runtime.Runtime
 
 fun main(args: Array<String>) {
@@ -26,9 +26,10 @@ fun main(args: Array<String>) {
     roomFirstNN.printNetwork()
      */
 
-    val runtime = Runtime()
-    Thread(runtime).start()
-    runtime.requestRun()
+    //val runtime = Runtime()
+    //Thread(runtime).start()
+    val windowInitializer = WindowInitializer()
+    windowInitializer.run()
 
 }
 
@@ -36,7 +37,7 @@ fun main(args: Array<String>) {
 //TODO: -> Написать алгоритм парсинга комнат
 //TODO: -> Написать алгоритм парсинга погоды
 
-//TODO: -> Исправить ошибку конференции ErrorType
+//TODO: -> Исправить ошибку конкуренции данных ErrorType
 
 //TODO: Разработать алгоритмы поведения устройств
 //TODO: -> Считывание данных об окружающей среде

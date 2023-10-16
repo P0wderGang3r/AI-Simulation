@@ -1,0 +1,56 @@
+{
+  "modelsDir": "data/models",
+  "texturesDir": "data/textures",
+  "models": [
+    {
+      "name": "cone",
+      "path": "cone.model"
+    },
+    {
+      "name": "cuboid",
+      "path": "cuboid.model"
+    },
+    {
+      "name": "cuboid2",
+      "path": "cuboid2.model"
+    },
+    {
+      "name": "cylinder",
+      "path": "cylinder.model"
+    },
+    {
+      "name": "platform",
+      "path": "platform.model"
+    },
+    {
+      "name": "prism",
+      "path": "prism.model"
+    }
+  ],
+  "textures": [
+    {
+      "name": "default",
+      "path": "defaulttex.bmp"
+    },
+    {
+      "name": "groundtex",
+      "path": "groundtex.bmp"
+    },
+    {
+      "name": "hometex",
+      "path": "hometex.bmp"
+    },
+    {
+      "name": "leavestex",
+      "path": "leavestex.bmp"
+    },
+    {
+      "name": "rooftex",
+      "path": "rooftex.bmp"
+    },
+    {
+      "name": "woodtex",
+      "path": "woodtex.bmp"
+    }
+  ]
+}
