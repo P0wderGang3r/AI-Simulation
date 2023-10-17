@@ -1,9 +1,25 @@
-package renderer.sceneComputations
+package renderer.computations
 
 import kotlin.math.cos
 import kotlin.math.sin
 
-object MapRotation {
+object MapTransformations {
+    fun move(coords: FloatArray, positionStatus: FloatArray): FloatArray {
+        return floatArrayOf(
+            coords[0] + positionStatus[0],
+            coords[1] + positionStatus[1],
+            coords[2] + positionStatus[2]
+        )
+    }
+
+    fun resize(coordinates: FloatArray, size: Float): FloatArray {
+        return floatArrayOf(
+            coordinates[0] * size,
+            coordinates[1] * size,
+            coordinates[2] * size
+        )
+    }
+
     private val rotationMatrix = Array(3) { FloatArray(3) }
     private fun rotMatrix(alpha: Float, beta: Float, gamma: Float) {
         rotationMatrix[0][0] = (cos(alpha.toDouble()) * cos(beta.toDouble())).toFloat()

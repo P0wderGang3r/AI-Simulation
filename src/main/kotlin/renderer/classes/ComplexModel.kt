@@ -1,4 +1,4 @@
-package renderer.primitives
+package renderer.classes
 
 class ComplexModel(
     var model: Model,

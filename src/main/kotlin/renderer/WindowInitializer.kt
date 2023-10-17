@@ -5,11 +5,11 @@ import org.lwjgl.glfw.Callbacks
 import org.lwjgl.glfw.GLFW
 import org.lwjgl.glfw.GLFWErrorCallback
 import org.lwjgl.opengl.GL
-import org.lwjgl.opengl.GL11
+import org.lwjgl.opengl.GL20
 import org.lwjgl.system.MemoryStack
 import org.lwjgl.system.MemoryUtil
 import renderer.SceneGlobals.rotationStatus
-import renderer.sceneInitializers.SceneController
+import renderer.initializers.SceneController
 
 class WindowInitializer {
     // The window handle
@@ -49,9 +49,9 @@ class WindowInitializer {
         GLFW.glfwSetKeyCallback(window) {
             window: Long, key: Int, scancode: Int, action: Int, mods: Int ->
             if (key == GLFW.GLFW_KEY_ESCAPE && action == GLFW.GLFW_RELEASE) GLFW.glfwSetWindowShouldClose(window, true)
-            if (key == GLFW.GLFW_KEY_LEFT && action == GLFW.GLFW_REPEAT) {rotationStatus[1] -= 0.05f; println("here")}
+            if (key == GLFW.GLFW_KEY_LEFT && action == GLFW.GLFW_REPEAT) rotationStatus[1] -= 0.05f
             if (key == GLFW.GLFW_KEY_RIGHT && action == GLFW.GLFW_REPEAT) rotationStatus[1] += 0.05f
-            if (key == GLFW.GLFW_KEY_W && action == GLFW.GLFW_REPEAT) {rotationStatus[2] -= 0.05f; println("here")}
+            if (key == GLFW.GLFW_KEY_W && action == GLFW.GLFW_REPEAT) rotationStatus[2] -= 0.05f
             if (key == GLFW.GLFW_KEY_S && action == GLFW.GLFW_REPEAT) rotationStatus[2] += 0.05f
             if (key == GLFW.GLFW_KEY_A && action == GLFW.GLFW_REPEAT) rotationStatus[0] -= 0.05f
             if (key == GLFW.GLFW_KEY_D && action == GLFW.GLFW_REPEAT) rotationStatus[0] += 0.05f
@@ -93,20 +93,22 @@ class WindowInitializer {
         SceneController.mapInitialize("test_map")
 
         // Set the clear color
-        GL11.glClearColor(
+        GL20.glClearColor(
             SceneGlobals.sceneColorR,
             SceneGlobals.sceneColorG,
             SceneGlobals.sceneColorB,
             1f
         )
 
-        GL11.glEnable(GL11.GL_BLEND)
-        GL11.glDepthFunc(GL11.GL_LESS)
+        //GL20.glEnable(GL20.GL_BLEND)
+        GL20.glEnable(GL20.GL_DEPTH_TEST)
+        GL20.glDepthFunc(GL20.GL_LESS)
 
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
         while (!GLFW.glfwWindowShouldClose(window)) {
-            GL11.glClear(GL11.GL_COLOR_BUFFER_BIT or GL11.GL_DEPTH_BUFFER_BIT) // clear the framebuffer
+            GL20.glClear(GL20.GL_COLOR_BUFFER_BIT or GL20.GL_DEPTH_BUFFER_BIT) // clear the framebuffer
+            GL20.glMatrixMode(GL20.GL_MODELVIEW);
 
             SceneLoop.renderMap()
 

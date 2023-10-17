@@ -1,10 +1,8 @@
-package renderer.primitives
+package renderer.classes
 
-import renderer.SceneGlobals
 import java.io.IOException
 import java.nio.file.Files
 import java.nio.file.Paths
-import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.abs
 import kotlin.math.max
@@ -42,8 +40,11 @@ class Model(
         val fileInput: List<String>
         try {
             fileInput = Files.readAllLines(Paths.get(pathToModel))
+            /*
             println()
             println(pathToModel)
+
+             */
 
             for (line in fileInput) {
                 val elements = line.split(" ")
@@ -52,10 +53,13 @@ class Model(
                 }
                 if (elements[0] == "f") {
                     fModel.add(intArrayOf(elements[1].toInt(), elements[2].toInt(), elements[3].toInt()))
+                    /*
                     println("---------------")
                     println(line)
                     println(elements)
                     println("" + elements[1].toInt() + " " + elements[2].toInt() + " " + elements[3].toInt())
+
+                     */
                 }
             }
 

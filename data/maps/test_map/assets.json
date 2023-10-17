@@ -30,27 +30,39 @@
   "textures": [
     {
       "name": "default",
-      "path": "defaulttex.bmp"
+      "path": "defaulttex.data",
+      "width": 5,
+      "height": 5
     },
     {
       "name": "groundtex",
-      "path": "groundtex.bmp"
+      "path": "groundtex.data",
+      "width": 5,
+      "height": 5
     },
     {
       "name": "hometex",
-      "path": "hometex.bmp"
+      "path": "hometex.data",
+      "width": 5,
+      "height": 5
     },
     {
       "name": "leavestex",
-      "path": "leavestex.bmp"
+      "path": "leavestex.data",
+      "width": 5,
+      "height": 5
     },
     {
       "name": "rooftex",
-      "path": "rooftex.bmp"
+      "path": "rooftex.data",
+      "width": 5,
+      "height": 5
     },
     {
       "name": "woodtex",
-      "path": "woodtex.bmp"
+      "path": "woodtex.data",
+      "width": 5,
+      "height": 5
     }
   ]
 }

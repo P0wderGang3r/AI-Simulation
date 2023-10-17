@@ -1,23 +1,18 @@
-package renderer.sceneInitializers
+package renderer.initializers
 
 import jsonParser
 import kotlinx.serialization.decodeFromString
 import network.default_NN.enums.ErrorType
-import renderer.SceneGlobals
 import renderer.SceneMemory
 import renderer.json.jAssets
 import renderer.json.jModel
-import renderer.json.jParameters
 import renderer.json.jTexture
-import renderer.primitives.Model
-import renderer.primitives.Texture
+import renderer.classes.Model
+import renderer.classes.Texture
 import java.io.File
-import java.io.IOException
-import java.nio.file.Files
-import java.nio.file.Paths
 import java.util.ArrayList
 
-object initAssets {
+object InitAssets {
 
     private fun fileParser(path: String): ErrorType {
 
@@ -55,7 +50,10 @@ object initAssets {
         SceneMemory.textures = textureList
 
         for (texture in jTexturesJSON) {
-            textureList.add(Texture(texture.name, "$pathToDirectory/${texture.path}"))
+            textureList.add(Texture(texture.name,
+                "$pathToDirectory/${texture.path}",
+                texture.width, texture.height)
+            )
         }
     }
 

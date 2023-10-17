@@ -1,8 +1,8 @@
 package renderer
 
-import renderer.primitives.ComplexModel
-import renderer.primitives.Model
-import renderer.primitives.Texture
+import renderer.classes.ComplexModel
+import renderer.classes.Model
+import renderer.classes.Texture
 
 object SceneMemory {
     //---------------------------------------НАЗВАНИЕ КАРТЫ-----------------------------------------

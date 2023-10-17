@@ -1,4 +1,4 @@
-package renderer.sceneInitializers
+package renderer.initializers
 
 import jsonParser
 import kotlinx.serialization.decodeFromString
@@ -8,13 +8,13 @@ import renderer.SceneMemory
 import renderer.json.jMap
 import renderer.json.jObjects
 import renderer.json.jParameters
-import renderer.primitives.ComplexModel
-import renderer.primitives.Model
-import renderer.primitives.Texture
+import renderer.classes.ComplexModel
+import renderer.classes.Model
+import renderer.classes.Texture
 import java.io.File
 import java.util.ArrayList
 
-object initMap {
+object InitMap {
 
     private fun fileParser(path: String): ErrorType {
 

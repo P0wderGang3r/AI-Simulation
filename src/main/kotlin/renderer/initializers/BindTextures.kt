@@ -1,16 +1,16 @@
-package renderer.sceneInitializers
+package renderer.initializers
 
 import org.lwjgl.opengl.GL20
 import renderer.SceneGlobals
 import renderer.SceneMemory
 
-object bindTextures {
+object BindTextures {
     fun bind() {
-        GL20.glActiveTexture(GL20.GL_TEXTURE0)
         SceneGlobals.oglTextures = IntArray(SceneMemory.textures!!.size)
+        GL20.glGenTextures(SceneGlobals.oglTextures)
         for (index in SceneMemory.textures!!.indices) {
-            //GL20.glGenTextures(1, SceneGlobals.oglTextures, index);
-            GL20.glBindTexture(GL20.GL_TEXTURE_2D, SceneGlobals.oglTextures[index.toInt()])
+            GL20.glBindTexture(GL20.GL_TEXTURE_2D, SceneGlobals.oglTextures[index])
+
             GL20.glTexParameteri(GL20.GL_TEXTURE_2D, GL20.GL_TEXTURE_WRAP_S, GL20.GL_CLAMP_TO_EDGE)
             GL20.glTexParameteri(GL20.GL_TEXTURE_2D, GL20.GL_TEXTURE_WRAP_T, GL20.GL_CLAMP_TO_EDGE)
 
@@ -18,8 +18,19 @@ object bindTextures {
             GL20.glTexParameteri(GL20.GL_TEXTURE_2D, GL20.GL_TEXTURE_MIN_FILTER, GL20.GL_NEAREST)
             GL20.glTexParameteri(GL20.GL_TEXTURE_2D, GL20.GL_TEXTURE_MAG_FILTER, GL20.GL_NEAREST)
 
-            //GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, SceneMemory.getTextures().get(index).getBitmap(), 0);
-            SceneMemory.textures!![index.toInt()].numInMemory = index.toInt()
+            GL20.glTexImage2D(
+                GL20.GL_TEXTURE_2D,
+                0,
+                GL20.GL_RGB,
+                SceneMemory.textures!![index].width,
+                SceneMemory.textures!![index].height,
+                0,
+                GL20.GL_RGB,
+                GL20.GL_FLOAT,
+                SceneMemory.textures!![index].getPixels()
+            )
+
+            SceneMemory.textures!![index].numInMemory = index
             GL20.glBindTexture(GL20.GL_TEXTURE_2D, 0)
         }
     }
