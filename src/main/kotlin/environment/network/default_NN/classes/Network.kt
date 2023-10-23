@@ -1,11 +1,11 @@
-package network.default_NN.classes
+package environment.network.default_NN.classes
 
 import jsonParser
 import kotlinx.serialization.decodeFromString
 import logs
-import network.default_NN.enums.ActivationFunction
-import network.default_NN.enums.ErrorType
-import network.default_NN.json.jNetwork
+import environment.network.default_NN.enums.ActivationFunction
+import environment.network.default_NN.enums.ErrorType
+import environment.network.default_NN.json.jNetwork
 import java.io.File
 
 class Network {

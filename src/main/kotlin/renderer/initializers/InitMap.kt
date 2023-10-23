@@ -2,7 +2,7 @@ package renderer.initializers
 
 import jsonParser
 import kotlinx.serialization.decodeFromString
-import network.default_NN.enums.ErrorType
+import environment.network.default_NN.enums.ErrorType
 import renderer.SceneGlobals
 import renderer.SceneMemory
 import renderer.json.jMap

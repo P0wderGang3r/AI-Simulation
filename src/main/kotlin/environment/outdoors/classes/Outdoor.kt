@@ -1,44 +1,37 @@
-package environment.outdoors
+package environment.outdoors.classes
 
 import environment.backrooms.classes.House
 import environment.outdoors.json.jOutdoor
-import environment.outdoors.json.jTemperature
 import jsonParser
 import kotlinx.serialization.decodeFromString
-import network.default_NN.enums.ErrorType
+import environment.network.default_NN.enums.ErrorType
 import java.io.File
 
 class Outdoor {
     private var header = ""
-    private val houses = ArrayList<House>()
 
-    fun getHouses() = houses
+    public fun getHeader() = header
+
+    //House
+
+    private val house = House()
+
+    fun getHouse() = house
+
 
     //Temperature
 
-    private var weather = ArrayList<ArrayList<Temperature>>()
+    private var weather = Weather()
 
     fun getWeather() = weather
 
-    fun addWeather(temperature: Temperature) {
-    }
 
-    fun parseWeather(path: String): ErrorType {
-        //TODO
+    //Outdoor map path
 
-        return ErrorType.OK
-    }
+    private var outdoorMap = String
 
-    fun genWeather(path: String): ErrorType {
-        //Temperature parse------------------
-        val parseResult = parseWeather(path)
-        if (parseResult != ErrorType.OK) {
-            return parseResult
-        }
-        val jTemperatureJSON = parseResult.data as jTemperature
+    fun getOutdoorMap() = outdoorMap
 
-        return ErrorType.OK
-    }
 
     //Outdoor generation----------------
 
@@ -74,11 +67,9 @@ class Outdoor {
 
         header = jOutdoorJSON.header
 
-        for (housePath in jOutdoorJSON.houses) {
-            val newHouse = House()
-            houses.add(newHouse)
-            newHouse.funHouseGen(housePath)
-        }
+        house.funHouseGen(jOutdoorJSON.path_house)
+
+        weather.genWeather(jOutdoorJSON.path_weather)
 
         return ErrorType.OK
     }

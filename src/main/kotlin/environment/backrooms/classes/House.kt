@@ -3,8 +3,8 @@ package environment.backrooms.classes
 import environment.backrooms.json.jHouse
 import jsonParser
 import kotlinx.serialization.decodeFromString
-import network.default_NN.classes.Network
-import network.default_NN.enums.ErrorType
+import environment.network.default_NN.classes.Network
+import environment.network.default_NN.enums.ErrorType
 import java.io.File
 
 class House {

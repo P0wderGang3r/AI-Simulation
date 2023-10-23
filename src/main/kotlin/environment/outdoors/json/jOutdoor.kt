@@ -5,7 +5,8 @@ import kotlinx.serialization.Serializable
 @Serializable
 class jOutdoor (
     val header: String,
-    val path_temperatures: String,
-    val houses: Array<String>
+    val path_weather: String,
+    val path_house: String,
+    val path_outdoor_map: String
 ){
 }

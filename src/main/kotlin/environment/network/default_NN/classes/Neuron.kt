@@ -1,6 +1,6 @@
-package network.default_NN.classes
+package environment.network.default_NN.classes
 
-import network.default_NN.enums.ActivationFunction
+import environment.network.default_NN.enums.ActivationFunction
 
 class Neuron (
     private val name: String = "",

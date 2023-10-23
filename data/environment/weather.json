@@ -4,13 +4,13 @@
     {
       "temperatures": [
         {
-          "hours": 0,
-          "minutes": 0,
+          "hour": 0,
+          "minute": 0,
           "temperature": 30
         },
         {
-          "hours": 12,
-          "minutes": 0,
+          "hour": 12,
+          "minute": 0,
           "temperature": 30
         }
       ]

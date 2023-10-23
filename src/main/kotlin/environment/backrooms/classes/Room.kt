@@ -1,6 +1,6 @@
 package environment.backrooms.classes
 
-import network.default_NN.classes.Network
+import environment.network.default_NN.classes.Network
 
 class Room(
     var name: String,

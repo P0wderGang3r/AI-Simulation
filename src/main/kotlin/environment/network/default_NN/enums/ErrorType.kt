@@ -1,4 +1,4 @@
-package network.default_NN.enums
+package environment.network.default_NN.enums
 
 enum class ErrorType {
     IOError {
