@@ -11,3 +11,5 @@ val jsonParser = Json {
 val logs = booleanArrayOf(
     false
 )
+
+var data_path: String = "data/"

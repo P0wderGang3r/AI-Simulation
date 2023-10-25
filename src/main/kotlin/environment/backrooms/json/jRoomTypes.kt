@@ -3,8 +3,7 @@ package environment.backrooms.json
 import kotlinx.serialization.Serializable
 
 @Serializable
-class jHouse (
+class jRoomTypes (
     val header: String,
-    val path_NN: String,
-    val floors: Array<Array<jRoom>>
+    val rooms: Array<jRoomType>
 )

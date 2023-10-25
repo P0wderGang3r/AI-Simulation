@@ -63,6 +63,8 @@ class Network {
         if (parseResult != ErrorType.OK)
             return parseResult
 
+        network.clear()
+
         val jNetworkJSON = parseResult.data as jNetwork
 
         header = jNetworkJSON.header
