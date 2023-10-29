@@ -1,22 +1,29 @@
 package environment.outdoors.classes
 
-import environment.network.default_NN.enums.ErrorType
+import environment.network.enums.ErrorType
 import environment.outdoors.json.jDay
 import environment.outdoors.json.jWeather
 import jsonParser
 import kotlinx.serialization.decodeFromString
 import java.io.File
 
-class Weather {
+class Weather(
+    val outdoor: Outdoor
+) {
     private var header = ""
 
-    public fun getHeader() = header
-
+    fun getHeader() = header
 
 
     private var temperatures = ArrayList<ArrayList<Temperature>>()
 
-    public fun getTemperatures() = temperatures
+    fun getTemperatures() = temperatures
+
+    fun getCurrentTemperature(): Double {
+        val currentTemperature = outdoor.envGlobals.getSimulationTime()
+
+        return TODO()
+    }
 
     private fun genTemperatures(days: Array<jDay>) {
         for (dayJSON in days) {

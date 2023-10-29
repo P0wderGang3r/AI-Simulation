@@ -1,131 +1,140 @@
 {
   "header": "default",
   "layers": [
-    [
-      {
-        "name" : "week_0001",
-        "synapses": [],
-        "activation": "none",
-        "parameters": []
-      },
-      {
-        "name" : "week_0010",
-        "synapses": [],
-        "activation": "none",
-        "parameters": []
-      },
-      {
-        "name" : "week_0100",
-        "synapses": [],
-        "activation": "none",
-        "parameters": []
-      },
-      {
-        "name" : "week_1000",
-        "synapses": [],
-        "activation": "none",
-        "parameters": []
-      },
-      {
-        "name" : "time_0000001",
-        "synapses": [],
-        "activation": "none",
-        "parameters": []
-      },
-      {
-        "name" : "time_0000010",
-        "synapses": [],
-        "activation": "none",
-        "parameters": []
-      },
-      {
-        "name" : "time_0000100",
-        "synapses": [],
-        "activation": "none",
-        "parameters": []
-      },
-      {
-        "name" : "time_0001000",
-        "synapses": [],
-        "activation": "none",
-        "parameters": []
-      },
-      {
-        "name" : "time_0010000",
-        "synapses": [],
-        "activation": "none",
-        "parameters": []
-      },
-      {
-        "name" : "time_0100000",
-        "synapses": [],
-        "activation": "none",
-        "parameters": []
-      },
-      {
-        "name" : "time_1000000",
-        "synapses": [],
-        "activation": "none",
-        "parameters": []
-      },
-      {
-        "name" : "r1_man_0001",
-        "synapses": [],
-        "activation": "none",
-        "parameters": []
-      },
-      {
-        "name" : "r1_man_0010",
-        "synapses": [],
-        "activation": "none",
-        "parameters": []
-      },
-      {
-        "name" : "r1_man_0100",
-        "synapses": [],
-        "activation": "none",
-        "parameters": []
-      },
-      {
-        "name" : "r1_man_1000",
-        "synapses": [],
-        "activation": "none",
-        "parameters": []
-      },
-      {
-        "name" : "r1_res_mode_01",
-        "synapses": [],
-        "activation": "none",
-        "parameters": []
-      },
-      {
-        "name" : "r1_res_mode_10",
-        "synapses": [],
-        "activation": "none",
-        "parameters": []
-      }
-    ],
-    [
-      {
-        "name": "??????????????",
-        "synapses": [],
-        "activation": "none",
-        "parameters": []
-      }
-    ],
-    [
-      {
-        "name" : "r1_req_mode_01",
-        "synapses": [],
-        "activation": "none",
-        "parameters": []
-      },
-      {
-        "name" : "r1_req_mode_10",
-        "synapses": [],
-        "activation": "none",
-        "parameters": []
-      }
-    ]
+    {
+      "learnable": false,
+      "neurons": [
+        {
+          "name": "week_0001",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name": "week_0010",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name": "week_0100",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name": "week_1000",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name": "time_0000001",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name": "time_0000010",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name": "time_0000100",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name": "time_0001000",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name": "time_0010000",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name": "time_0100000",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name": "time_1000000",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name": "r1_man_0001",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name": "r1_man_0010",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name": "r1_man_0100",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name": "r1_man_1000",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name": "r1_res_mode_01",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name": "r1_res_mode_10",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "learnable": true,
+      "neurons": [
+        {
+          "name": "??????????????",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "learnable": false,
+      "neurons": [
+        {
+          "name" : "r1_req_mode_01",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name" : "r1_req_mode_10",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        }
+      ]
+    }
   ]
 }

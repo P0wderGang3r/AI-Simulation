@@ -50,7 +50,7 @@
         "room_type": "ladder",
         "coord_X": -1,
         "coord_Y": 0,
-        "path_NN": "NN_first.json",
+        "path_NN": "NN_none.json",
         "connections": [
           "ladder_2"
         ],
@@ -63,7 +63,7 @@
         "room_type": "bedroom",
         "coord_X": 0,
         "coord_Y": 0,
-        "path_NN": "NN_first.json",
+        "path_NN": "NN_second.json",
         "connections": [
           "bedroom_2"
         ],
@@ -84,7 +84,7 @@
         "room_type": "bedroom",
         "coord_X": 5,
         "coord_Y": 0,
-        "path_NN": "NN_first.json",
+        "path_NN": "NN_third.json",
         "connections": [
           "bedroom_1"
         ],
@@ -105,7 +105,7 @@
         "room_type": "ladder",
         "coord_X": -1,
         "coord_Y": 0,
-        "path_NN": "NN_first.json",
+        "path_NN": "NN_none.json",
         "connections": [
           "ladder_1"
         ],

@@ -1,33 +1,9 @@
 {
-  "header": "NN_first",
+  "header": "NN_second",
   "layers": [
     {
       "learnable": false,
       "neurons":[
-        {
-          "name" : "man_0001",
-          "synapses": [],
-          "activation": "none",
-          "parameters": []
-        },
-        {
-          "name" : "man_0010",
-          "synapses": [],
-          "activation": "none",
-          "parameters": []
-        },
-        {
-          "name" : "man_0100",
-          "synapses": [],
-          "activation": "none",
-          "parameters": []
-        },
-        {
-          "name" : "man_1000",
-          "synapses": [],
-          "activation": "none",
-          "parameters": []
-        },
         {
           "name" : "temp_0001",
           "synapses": [],
@@ -82,30 +58,6 @@
       "learnable": true,
       "neurons":[
         {
-          "name" : "man_req_mode_01",
-          "synapses": [
-            "req_mode_01",
-            "man_0001",
-            "man_0010",
-            "man_0100",
-            "man_1000"
-          ],
-          "activation": "threshold",
-          "parameters": [0.5]
-        },
-        {
-          "name" : "man_req_mode_10",
-          "synapses": [
-            "req_mode_10",
-            "man_0001",
-            "man_0010",
-            "man_0100",
-            "man_1000"
-          ],
-          "activation": "threshold",
-          "parameters": [0.5]
-        },
-        {
           "name" : "temp_req_mode_01",
           "synapses": [
             "req_mode_01",
@@ -125,30 +77,6 @@
             "temp_0010",
             "temp_0100",
             "temp_1000"
-          ],
-          "activation": "threshold",
-          "parameters": [0.5]
-        },
-        {
-          "name" : "man_con_mode_01",
-          "synapses": [
-            "con_mode_01",
-            "man_0001",
-            "man_0010",
-            "man_0100",
-            "man_1000"
-          ],
-          "activation": "threshold",
-          "parameters": [0.5]
-        },
-        {
-          "name" : "man_con_mode_10",
-          "synapses": [
-            "con_mode_10",
-            "man_0001",
-            "man_0010",
-            "man_0100",
-            "man_1000"
           ],
           "activation": "threshold",
           "parameters": [0.5]
@@ -183,51 +111,10 @@
       "learnable": true,
       "neurons": [
         {
-          "name" : "req_mode_01",
-          "synapses": [
-            "man_req_mode_01",
-            "temp_req_mode_01"
-          ],
-          "activation": "threshold",
-          "parameters": [0.5]
-        },
-        {
-          "name" : "req_mode_10",
-          "synapses": [
-            "man_req_mode_10",
-            "temp_req_mode_10"
-          ],
-          "activation": "threshold",
-          "parameters": [0.5]
-        },
-        {
-          "name" : "con_mode_01",
-          "synapses": [
-            "man_con_mode_01",
-            "temp_con_mode_01"
-          ],
-          "activation": "threshold",
-          "parameters": [0.5]
-        },
-        {
-          "name" : "con_mode_10",
-          "synapses": [
-            "man_con_mode_10",
-            "temp_con_mode_10"
-          ],
-          "activation": "threshold",
-          "parameters": [0.5]
-        }
-      ]
-    },
-    {
-      "learnable": true,
-      "neurons":[
-        {
           "name" : "res_mode_01",
           "synapses": [
-            "req_mode_01",
-            "con_mode_01"
+            "temp_req_mode_01",
+            "temp_con_mode_01"
           ],
           "activation": "threshold",
           "parameters": [0.5]
@@ -235,8 +122,8 @@
         {
           "name" : "res_mode_10",
           "synapses": [
-            "req_mode_10",
-            "con_mode_10"
+            "temp_req_mode_10",
+            "temp_con_mode_10"
           ],
           "activation": "threshold",
           "parameters": [0.5]

@@ -1,3 +1,4 @@
+import environment.network.classes.Network
 import renderer.WindowInitializer
 
 fun main(args: Array<String>) {
@@ -13,31 +14,51 @@ fun main(args: Array<String>) {
     // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
     println("Args: ${args.joinToString()}\n")
 
-    /*
     val globalNN = Network()
 
-    globalNN.genNeuralNetwork("./data/house_first/NN_global.json")
+    globalNN.genNeuralNetwork("./data/environment/default_house/NN_global.json")
     globalNN.printNetwork()
 
     val roomFirstNN = Network()
 
-    roomFirstNN.genNeuralNetwork("./data/house_first/NN_room.json")
+    roomFirstNN.genNeuralNetwork("./data/environment/default_house/NN_first.json")
     roomFirstNN.printNetwork()
-     */
+
+    val roomSecondNN = Network()
+
+    roomSecondNN.genNeuralNetwork("./data/environment/default_house/NN_second.json")
+    roomSecondNN.printNetwork()
+
+    val roomThirdNN = Network()
+
+    roomThirdNN.genNeuralNetwork("./data/environment/default_house/NN_third.json")
+    roomThirdNN.printNetwork()
+
+
+    val roomNoneNN = Network()
+
+    roomNoneNN.genNeuralNetwork("./data/environment/default_house/NN_none.json")
+    roomNoneNN.printNetwork()
 
     //val runtime = Runtime()
     //Thread(runtime).start()
-    val windowInitializer = WindowInitializer()
-    windowInitializer.run()
+    //val windowInitializer = WindowInitializer()
+    //windowInitializer.run()
 
 }
 
-
-//TODO: -> Исправить ошибку конкуренции данных ErrorType
+//TODO: Структура глобальной нейронной сети
+//TODO: Обучение нейронной сети
+//TODO: Проверка работы нейронной сети
 
 //TODO: Разработать алгоритмы поведения устройств
 //TODO: -> Считывание данных об окружающей среде
 //TODO: -> Разработка алгоритмов влияния на окружающую среду
+
+//TODO: Исправить ошибку конкуренции данных ErrorType
+
+//TODO: Текущая температура
+
 
 //TODO: карта соприкасающихся комнат
 //TODO: -> Алгоритм создания дверных проёмов между комнатами
@@ -47,10 +68,7 @@ fun main(args: Array<String>) {
 //TODO: -> Разработка алгоритма поиска кратчайшего пути (с элементами случайности)
 //TODO: -> Разработка распорядка дня
 
-//TODO: Структура глобальной нейронной сети
-//TODO: Обучение нейронной сети
-//TODO: Проверка работы нейронной сети
-
+//TODO: счётчик людей в комнате
 
 //TODO: графический вывод информации
 //TODO: -> органы управления камерой в трёхмерной сцене

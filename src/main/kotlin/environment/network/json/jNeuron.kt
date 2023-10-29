@@ -1,4 +1,4 @@
-package environment.network.default_NN.json
+package environment.network.json
 
 import kotlinx.serialization.Serializable
 

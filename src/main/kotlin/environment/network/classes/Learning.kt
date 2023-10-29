@@ -1,4 +1,4 @@
-package environment.network.default_NN.classes
+package environment.network.classes
 
 class Learning {
     fun importWeights(path: String, network: Network) {

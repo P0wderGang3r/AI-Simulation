@@ -1,7 +1,8 @@
 package runtime
 
 class RuntimeParams {
-    private var simTickDelay: Long = 1000
+    //-----------------------------------------------------------------------------КОЛИЧЕСТВО ТАКТОВ СИМУЛЯЦИИ В СЕКУНДУ
+    private var simTickDelay: Long = 50
 
     fun getSimTickDelay(): Long = simTickDelay
 
@@ -13,12 +14,16 @@ class RuntimeParams {
         this.simTickDelay = 1000 / simSpeed
     }
 
-    //In milliseconds
-    private var simTickTime: Double = 0.1
+    //--------------------------------------------------------------------------------------------------КАДРОВАЯ ЧАСТОТА
 
-    fun getSimTickTime(): Double = simTickTime
+    @Volatile
+    var framesPerSecond = 60
 
-    fun setSimTickTime(simTickTime : Double) {
-        this.simTickTime = simTickTime
+    fun getFramesPerSecond(): Int {
+        return framesPerSecond
+    }
+
+    fun setFramesPerSecond(framesPerSecond: Int) {
+        this.framesPerSecond = framesPerSecond
     }
 }

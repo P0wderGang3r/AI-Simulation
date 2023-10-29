@@ -1,0 +1,57 @@
+{
+  "header": "NN_third",
+  "layers": [
+    {
+      "learnable": false,
+      "neurons":[
+        {
+          "name" : "req_mode_01",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name" : "req_mode_10",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name" : "con_mode_01",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name" : "con_mode_10",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "learnable": true,
+      "neurons": [
+        {
+          "name" : "res_mode_01",
+          "synapses": [
+            "req_mode_01",
+            "con_mode_01"
+          ],
+          "activation": "threshold",
+          "parameters": [0.5]
+        },
+        {
+          "name" : "res_mode_10",
+          "synapses": [
+            "req_mode_10",
+            "con_mode_10"
+          ],
+          "activation": "threshold",
+          "parameters": [0.5]
+        }
+      ]
+    }
+  ]
+}

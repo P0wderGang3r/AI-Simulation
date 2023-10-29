@@ -1,10 +1,10 @@
-package environment.network.default_NN.json
+package environment.network.json
 
 import kotlinx.serialization.Serializable
 
 @Serializable
 class jNetwork (
     val header: String,
-    val layers: Array<Array<jNeuron>>
+    val layers: Array<jLayer>
 ) {
 }

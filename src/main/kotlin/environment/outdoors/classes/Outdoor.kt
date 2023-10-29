@@ -1,39 +1,42 @@
 package environment.outdoors.classes
 
 import environment.backrooms.classes.House
+import environment.globals.EnvGlobals
 import environment.outdoors.json.jOutdoor
 import jsonParser
 import kotlinx.serialization.decodeFromString
-import environment.network.default_NN.enums.ErrorType
+import environment.network.enums.ErrorType
 import java.io.File
 
-class Outdoor {
+class Outdoor(
+    val envGlobals: EnvGlobals
+) {
     private var header = ""
 
     public fun getHeader() = header
 
-    //House
+    //-------------------------------------------------------------------------------------------------------------House
 
-    private val house = House()
+    private val house = House(this)
 
     fun getHouse() = house
 
 
-    //Temperature
+    //------------------------------------------------------------------------------------------------------WEATHER ZONE
 
-    private var weather = Weather()
+    private var weather = Weather(this)
 
     fun getWeather() = weather
 
 
-    //Outdoor map path
+    //--------------------------------------------------------------------------------------------------Outdoor map path
 
     private var outdoorMap = String
 
     fun getOutdoorMap() = outdoorMap
 
 
-    //Outdoor generation----------------
+    //------------------------------------------------------------------------------------------------Outdoor generation
 
     private fun parseOutdoor(path: String): ErrorType {
 

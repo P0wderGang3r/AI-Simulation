@@ -3,7 +3,7 @@ package environment.backrooms.classes
 import environment.backrooms.json.jDevice
 import environment.backrooms.json.jFurniture
 import environment.backrooms.json.jRoomType
-import environment.network.default_NN.enums.ErrorType
+import environment.network.enums.ErrorType
 
 class RoomType {
     var header: String = "Empty"

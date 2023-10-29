@@ -2,7 +2,7 @@ package environment.backrooms.classes
 
 import environment.backrooms.json.jRoom
 import environment.backrooms.json.jRoomType
-import environment.network.default_NN.enums.ErrorType
+import environment.network.enums.ErrorType
 
 class Floor (
     val number: Int
