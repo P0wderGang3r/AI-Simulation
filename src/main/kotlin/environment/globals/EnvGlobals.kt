@@ -6,6 +6,8 @@ class EnvGlobals {
 
     fun getSimulationTime(): Double = simulationTime
 
+    fun getExactDate(dateTime: DateTime): Double = dateTime.getPrecise(simulationTime)
+
     fun nextSimulationTime() {
         simulationTime += deltaTime
     }

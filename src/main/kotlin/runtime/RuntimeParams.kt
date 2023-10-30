@@ -17,7 +17,7 @@ class RuntimeParams {
     //--------------------------------------------------------------------------------------------------КАДРОВАЯ ЧАСТОТА
 
     @Volatile
-    var framesPerSecond = 60
+    private var framesPerSecond = 60
 
     fun getFramesPerSecond(): Int {
         return framesPerSecond

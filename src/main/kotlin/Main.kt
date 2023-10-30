@@ -1,3 +1,4 @@
+import environment.globals.DateTime
 import environment.network.classes.Network
 import renderer.WindowInitializer
 
@@ -40,10 +41,25 @@ fun main(args: Array<String>) {
     roomNoneNN.genNeuralNetwork("./data/environment/default_house/NN_none.json")
     roomNoneNN.printNetwork()
 
+    println(DateTime.DAYS.getPrecise(1000000000.0))
+    println(DateTime.DAYS.getRaw(1000000000.0))
+
+    println(DateTime.HOURS.getPrecise(1000000000.0))
+    println(DateTime.HOURS.getRaw(1000000000.0))
+
+    println(DateTime.MINUTES.getPrecise(1000000000.0))
+    println(DateTime.MINUTES.getRaw(1000000000.0))
+
+    println(DateTime.SECONDS.getPrecise(1000000000.0))
+    println(DateTime.SECONDS.getRaw(1000000000.0))
+
+    println(DateTime.MILLISECONDS.getPrecise(1000000000.0))
+    println(DateTime.MILLISECONDS.getRaw(1000000000.0))
+
     //val runtime = Runtime()
     //Thread(runtime).start()
-    //val windowInitializer = WindowInitializer()
-    //windowInitializer.run()
+    val windowInitializer = WindowInitializer()
+    windowInitializer.run()
 
 }
 
@@ -51,13 +67,7 @@ fun main(args: Array<String>) {
 //TODO: Обучение нейронной сети
 //TODO: Проверка работы нейронной сети
 
-//TODO: Разработать алгоритмы поведения устройств
-//TODO: -> Считывание данных об окружающей среде
-//TODO: -> Разработка алгоритмов влияния на окружающую среду
-
 //TODO: Исправить ошибку конкуренции данных ErrorType
-
-//TODO: Текущая температура
 
 
 //TODO: карта соприкасающихся комнат

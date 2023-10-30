@@ -1,5 +1,6 @@
 package environment.outdoors.classes
 
+import environment.globals.DateTime
 import environment.network.enums.ErrorType
 import environment.outdoors.json.jDay
 import environment.outdoors.json.jWeather
@@ -15,22 +16,56 @@ class Weather(
     fun getHeader() = header
 
 
-    private var temperatures = ArrayList<ArrayList<Temperature>>()
+    private var dayTemperatures = ArrayList<Day>()
 
-    fun getTemperatures() = temperatures
+    fun getTemperatures() = dayTemperatures
 
     fun getCurrentTemperature(): Double {
-        val currentTemperature = outdoor.envGlobals.getSimulationTime()
+        val currentDay = outdoor.envGlobals.getExactDate(DateTime.DAYS).toInt()
+        val currentHour = outdoor.envGlobals.getExactDate(DateTime.HOURS).toInt()
+        val currentMinute = outdoor.envGlobals.getExactDate(DateTime.MINUTES).toInt()
+        var currentTemperature = dayTemperatures[0].temperatures[0]
 
-        return TODO()
+        var isFoundByHour = false
+
+        //Проходимся по всем дням
+        for (dayTemperature in dayTemperatures) {
+            //Если мы нашли требуемый день, то выбираем первый попавшийся и...
+            if (currentDay >= dayTemperature.day) {
+                //... проходимся по всем температурным показаниям
+                for (temperature in dayTemperature.temperatures) {
+                    //Если мы ещё не нашли искомую температуру, то просто перебираем все температуры
+                    if (!isFoundByHour)
+                        currentTemperature = temperature
+
+                    //Если мы врезались в подходящий час, то...
+                    if (currentHour >= currentTemperature.hour) {
+                        //... приостанавливаем перебор температуры
+                        isFoundByHour = true
+
+                        //Ищем наиболее подходящее время по минутам в подходящий час и...
+                        if (currentHour == currentTemperature.hour &&
+                            currentMinute >= currentTemperature.minute) {
+                            currentTemperature = temperature
+                            //... возвращаем наиболее подходящую температуру
+                            return currentTemperature.temperature
+                        }
+                    }
+                }
+                break
+            }
+        }
+
+        return currentTemperature.temperature
     }
 
     private fun genTemperatures(days: Array<jDay>) {
         for (dayJSON in days) {
-            val dayTemperatures = ArrayList<Temperature>()
-            temperatures.add(dayTemperatures)
+            val day = Day(dayJSON.day, ArrayList())
+            dayTemperatures.add(day)
+
             for (temperatureJSON in dayJSON.temperatures) {
-                dayTemperatures.add(
+                day.temperatures.add(
                     Temperature(
                         temperatureJSON.hour,
                         temperatureJSON.minute,

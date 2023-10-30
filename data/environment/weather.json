@@ -2,6 +2,7 @@
   "header": "default",
   "days": [
     {
+      "day": 1,
       "temperatures": [
         {
           "hour": 0,

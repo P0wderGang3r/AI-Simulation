@@ -4,49 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0370ea2-0878-430f-85d0-6ceae01546e4" name="Changes" comment="House parsing">
-      <change afterPath="$PROJECT_DIR$/data/environment/default_house/NN_none.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/environment/default_house/NN_second.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/environment/default_house/NN_third.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/Kotlin/Temperature Source.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/Other/Neural Networks.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/Other/Описание.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/globals/DeviceType.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/globals/EnvGlobals.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/globals/TemperatureSource.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/iot/Conditioner.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/iot/Counter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/iot/Thermometer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/iot/Thing.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/network/classes/Layer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/network/json/jLayer.kt" afterDir="false" />
+    <list default="true" id="e0370ea2-0878-430f-85d0-6ceae01546e4" name="Changes" comment="The World Time + Weather Report">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/globals/DateTime.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/classes/Day.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/environment/default_house/NN_first.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/environment/default_house/NN_first.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/environment/default_house/NN_global.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/environment/default_house/NN_global.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/environment/default_house/house.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/environment/default_house/house.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/environment/weather.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/environment/weather.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/JSON/JSON NN.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/JSON/JSON NN.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/Kotlin/Devices.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/Kotlin/Device.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/Описание.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/Device.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/Floor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/Floor.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/House.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/House.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/Room.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/Room.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/RoomType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/RoomType.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/network/default_NN/classes/Learning.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/network/classes/Learning.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/network/default_NN/classes/Network.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/network/classes/Network.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/network/default_NN/classes/Neuron.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/network/classes/Neuron.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/network/default_NN/classes/Synapse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/network/classes/Synapse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/network/default_NN/enums/ActivationFunction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/network/enums/ActivationFunction.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/network/default_NN/enums/ErrorType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/network/enums/ErrorType.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/network/default_NN/json/jNetwork.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/network/json/jNetwork.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/network/default_NN/json/jNeuron.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/network/json/jNeuron.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/classes/Outdoor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/classes/Outdoor.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/classes/Temperature.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/classes/Temperature.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/globals/EnvGlobals.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/globals/EnvGlobals.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/iot/Conditioner.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/iot/Conditioner.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/classes/Weather.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/classes/Weather.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/renderer/initializers/InitAssets.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/initializers/InitAssets.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/renderer/initializers/InitMap.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/initializers/InitMap.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/json/jDay.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/json/jDay.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/runtime/RuntimeParams.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/runtime/RuntimeParams.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,10 +30,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin File" />
-        <option value="Kotlin Enum" />
         <option value="Class" />
         <option value="Kotlin Object" />
         <option value="Kotlin Interface" />
+        <option value="Kotlin Enum" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -233,7 +200,8 @@
     <MESSAGE value="Texture rendering + Refactoring" />
     <MESSAGE value="Weather Reading + Refactor" />
     <MESSAGE value="House parsing" />
-    <option name="LAST_COMMIT_MESSAGE" value="House parsing" />
+    <MESSAGE value="The World Time + Weather Report" />
+    <option name="LAST_COMMIT_MESSAGE" value="The World Time + Weather Report" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

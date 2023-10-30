@@ -2,6 +2,7 @@ package environment.iot
 
 import environment.backrooms.classes.Room
 import environment.globals.DeviceType
+import environment.globals.TemperatureSource
 
 class Conditioner(
     override val room: Room,
@@ -20,7 +21,7 @@ class Conditioner(
     fun getCurrentTemperature(): Double = currentTemperature
 
     override fun doTheWork(): Double {
-        room.changeTemperature("inside", currentTemperature)
+        room.changeTemperature(TemperatureSource.ROOM, currentTemperature)
 
         return currentTemperature
     }
