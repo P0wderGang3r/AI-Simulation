@@ -4,26 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0370ea2-0878-430f-85d0-6ceae01546e4" name="Changes" comment="The World Time + Weather Report">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/Environment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/MoveNode.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/RoomConnection.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/globals/FurnitureType.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/globals/MoveNodeType.kt" afterDir="false" />
+    <list default="true" id="e0370ea2-0878-430f-85d0-6ceae01546e4" name="Changes" comment="Move nodes (only local) + Random room connections (AKA doorways)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/environment/default_house/house.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/environment/default_house/house.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/environment/furniture.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/environment/furniture.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/environment/room_types.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/environment/room_types.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/House.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/House.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/Room.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/Room.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jFurniture.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jFurniture.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jRoom.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jRoom.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/network/classes/Learning.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/network/classes/Learning.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/network/classes/Network.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/network/classes/Network.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/network/classes/Neuron.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/network/classes/Neuron.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/network/classes/Synapse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/network/classes/Synapse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/network/enums/ActivationFunction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/network/enums/ActivationFunction.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/MoveNode.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/MoveNode.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/RoomConnection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/RoomConnection.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +190,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698678059339</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Move nodes (only local) + Random room connections (AKA doorways)">
+      <option name="closed" value="true" />
+      <created>1698763868429</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1698763868429</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -218,7 +211,8 @@
     <MESSAGE value="Weather Reading + Refactor" />
     <MESSAGE value="House parsing" />
     <MESSAGE value="The World Time + Weather Report" />
-    <option name="LAST_COMMIT_MESSAGE" value="The World Time + Weather Report" />
+    <MESSAGE value="Move nodes (only local) + Random room connections (AKA doorways)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Move nodes (only local) + Random room connections (AKA doorways)" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -21,10 +21,39 @@ class House (
 
     private val moveNodes = ArrayList<MoveNode>()
 
+    fun addConnectionNode(connection: RoomConnection, nodes: ArrayList<MoveNode>) {
+        for (node in nodes) {
+            if (connection.coord_X_1 == node.coord_X && connection.coord_Y_1 == node.coord_Y) {
+                for (connNode in nodes) {
+                    if (connection.coord_X_2 == connNode.coord_X && connection.coord_Y_2 == connNode.coord_Y) {
+                        println("Connected ${node.room.header} and ${connNode.room.header}")
+                        node.connectedNodes.add(connNode)
+                    }
+                }
+            }
+        }
+    }
+
     fun genNodes() {
+        //Создаём множество локальных нод
         for (floor in floors) {
             for (room in floor.getRooms()) {
-                room.genLocalNodes()
+                moveNodes.addAll(room.genLocalNodes())
+            }
+        }
+
+        //Создаём множество соединений между локальными нодами комнат
+        for (floor in floors) {
+            for (room in floor.getRooms()) {
+                for (connectionString in room.connectionsString) {
+                    for (connRoom in floor.getRooms()) {
+                        if (connRoom.name == connectionString) {
+                            val connection = RoomConnection(room, connRoom)
+                            room.connections.add(connection)
+                            addConnectionNode(connection, moveNodes)
+                        }
+                    }
+                }
             }
         }
     }
@@ -140,6 +169,8 @@ class House (
             floors.add(floor)
             index++
         }
+
+        genNodes()
 
         return ErrorType.OK
     }

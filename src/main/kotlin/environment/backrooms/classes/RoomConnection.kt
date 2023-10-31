@@ -36,11 +36,6 @@ class RoomConnection (room1: Room, room2: Room) {
         val room2_coord_X_end = room2.roomType.size_X + room2.coord_X
         val room2_coord_Y_end = room2.roomType.size_Y + room2.coord_Y
 
-        val room2Coords = arrayOf(
-            arrayOf(room2.coord_X, room2.coord_Y),
-            arrayOf(room2.roomType.size_X + room2.coord_X, room2.roomType.size_Y + room2.coord_Y)
-        )
-
         //Проверка соприкосновения по левой стене комнаты 1 с правой стеной комнаты 2
         if (room1.coord_X == room2_coord_X_end) {
             coord_X_1 = 0
