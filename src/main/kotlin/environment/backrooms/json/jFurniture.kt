@@ -4,7 +4,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 class jFurniture (
+    val name: String,
     val furniture_type: String,
+    val type: String,
     val coord_X: Int,
     val coord_Y: Int,
     val rotation: Int

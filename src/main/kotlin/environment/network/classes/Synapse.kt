@@ -1,18 +1,28 @@
 package environment.network.classes
 
 class Synapse(
-    private val netElement: Neuron,
-    var weight: Double = 0.0
+    private val nextElement: Neuron,
+    private val prevElement: Neuron,
+    private var weight: Double = 0.0
 ) {
+    fun getWeight(): Double = weight
+    fun updateWeight(learnSpeed: Double) {
+        weight -= nextElement.pushSignal() * prevElement.pushError() * learnSpeed
+    }
+
     fun pullError(): Double {
-        return netElement.pushError()
+        return nextElement.pushError()
     }
 
     fun pullSignal(): Double {
-        return netElement.pushSignal()
+        return prevElement.pushSignal()
     }
 
-    fun getNetElementNumber(): String {
-        return netElement.name
+    fun getNextElementNumber(): String {
+        return nextElement.name
+    }
+
+    fun getPrevElementNumber(): String {
+        return prevElement.name
     }
 }

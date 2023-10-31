@@ -7,6 +7,7 @@ import environment.network.enums.ActivationFunction
 import environment.network.enums.ErrorType
 import environment.network.json.jNetwork
 import java.io.File
+import kotlin.math.pow
 
 class Network {
     private var header = ""
@@ -17,9 +18,9 @@ class Network {
     /**
      * Прямое распространение сигнала в нейронной сети
      */
-    fun doNextCycle(input: ArrayList<Double>): ArrayList<Double> {
+    fun doFullCycle(input: ArrayList<Double>): ArrayList<Double> {
         for (index in 0 until network[0].neurons.size) {
-            network[0].neurons[index].signal = input[index]
+            network[0].neurons[index].setSignal(input[index])
         }
 
         for (layer in network) {
@@ -38,13 +39,39 @@ class Network {
         return result
     }
 
+    fun deepLearningUpdateWeights(learningSpeed: Double) {
+        for (layerIndex in network.indices.reversed()) {
+            //TODO: здесь можно выполнить параллелизацию вычислений
+            for (neuron in network[layerIndex].neurons) {
+                for (synapse in neuron.synapses)
+                    synapse.updateWeight(learningSpeed)
+            }
+        }
+
+
+        //if (network[layerNumber].learnable)
+    }
+
     /**
      * Обратное распространение ошибки в нейронной сети
+     * @param input Ожидаемый результат работы нейронной сети
      */
-    fun deepLearning() {
-        for (index in network.indices.reversed()) {
-            //TODO: здесь можно выполнить параллелизацию вычислений
-            for (neuron in network[index].neurons) {
+    fun deepLearning(referenceOutput: ArrayList<Double>, layerNumber: Int) {
+
+        if (layerNumber == network.size - 1) {
+
+            val currentLayer = network[layerNumber].neurons
+
+            for (index in currentLayer.indices) {
+                val calcError = ((referenceOutput[index] - currentLayer[index].pushSignal()).pow(2) / 2.0) *
+                        currentLayer[index].getActivationFunction().derivative(arrayOf(currentLayer[index].pushSignal()))
+
+                currentLayer[index].setError(calcError)
+            }
+
+        } else {
+            deepLearning(referenceOutput, layerNumber + 1)
+            for (neuron in network[layerNumber].neurons) {
                 neuron.pullError()
             }
         }
@@ -142,21 +169,16 @@ class Network {
                         for (neuronPrevLayer in network[layerIndex - 1].neurons)
                             //Если есть такой нейрон по номеру, синапс для которого было определён,то ...
                             if (neuronPrevLayer.name == synapse) {
-                                //... создаём синапс на основе данных, прочитанных из файла
-                                synapses.add(
-                                    Synapse(
-                                        neuronPrevLayer,
-                                        weight = weight
-                                    )
+                                val synapse = Synapse(
+                                    neuronCurrLayer,
+                                    neuronPrevLayer,
+                                    weight = weight
                                 )
+                                //... создаём синапс на основе данных, прочитанных из файла
+                                synapses.add(synapse)
                                 //... ну и добавляем предыдущему нейрону обратную связь с текущим
                                 // для дальнейшего ускоренного параллельного обучения нейронной сети
-                                neuronPrevLayer.errorConnections.add(
-                                    Synapse(
-                                        neuronCurrLayer,
-                                        weight = weight
-                                    )
-                                )
+                                neuronPrevLayer.errorConnections.add(synapse)
                             }
                     }
                 }

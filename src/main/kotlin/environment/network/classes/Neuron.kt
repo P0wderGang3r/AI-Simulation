@@ -1,6 +1,7 @@
 package environment.network.classes
 
 import environment.network.enums.ActivationFunction
+import kotlin.math.pow
 
 class Neuron (
     val name: String = "",
@@ -9,19 +10,26 @@ class Neuron (
     private val activationFunction: ActivationFunction,
     private val activationParameters: Array<Double> = arrayOf()
 ) {
-    var signal: Double = 0.0
+    private var signal: Double = 0.0
+    private var error: Double = 0.0
 
     //--------------------------------------------------------------------------------------------РАСПРОСТРАНЕНИЕ ОШИБКИ
 
     fun pushError(): Double {
-        return TODO()
+        return error
     }
 
     fun pullError() {
         var error = 0.0
         for (errorConnection in errorConnections) {
-            error += errorConnection.pullError()
+            error += errorConnection.pullError() *
+                    errorConnection.getWeight() *
+                    activationFunction.derivative(arrayOf(pushSignal()))
         }
+    }
+
+    fun setError(error: Double) {
+        this.error = error
     }
 
     //-------------------------------------------------------------------------------------------РАСПРОСТРАНЕНИЕ СИГНАЛА
@@ -38,10 +46,14 @@ class Neuron (
         }
     }
 
+    fun setSignal(signal: Double) {
+        this.signal = signal
+    }
+
     fun getSynapsesString(): ArrayList<String> {
         val outputWeights = ArrayList<String>()
         for (output in synapses)
-            outputWeights.add("${output.getNetElementNumber()} : ${output.weight}")
+            outputWeights.add("${output.getPrevElementNumber()} : ${output.getWeight()}")
         return outputWeights
     }
 

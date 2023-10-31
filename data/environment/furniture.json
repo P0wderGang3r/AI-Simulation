@@ -4,9 +4,18 @@
     {
       "name": "Тестовая мебель",
       "furniture_type": "test",
+      "type": "DEFAULT",
       "size_X": 1,
       "size_Y": 1,
       "model": "test.mdl"
+    },
+    {
+      "name": "Дверь",
+      "furniture_type": "door",
+      "type": "DOOR",
+      "size_X": 1,
+      "size_Y": 1,
+      "model": "none"
     }
   ]
 }

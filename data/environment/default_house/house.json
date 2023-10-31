@@ -4,13 +4,15 @@
   "floors": [
     [
       {
+        "header": "hall",
         "name": "hall",
         "room_type": "hall",
         "coord_X": 0,
         "coord_Y": 0,
-        "path_NN": "NN_first.json",
+        "path_NN": "NN_third.json",
         "connections": [
-          "kitchen"
+          "kitchen",
+          "ladder_1"
         ],
         "devices": [
           {
@@ -25,13 +27,15 @@
         ]
       },
       {
+        "header": "kitchen",
         "name": "kitchen",
         "room_type": "kitchen",
-        "coord_X": 5,
+        "coord_X": 2,
         "coord_Y": 0,
         "path_NN": "NN_first.json",
         "connections": [
-          "hall"
+          "hall",
+          "ladder_1"
         ],
         "devices": [
           {
@@ -46,10 +50,11 @@
         ]
       },
       {
+        "header": "ladder_1",
         "name": "ladder_1",
         "room_type": "ladder",
-        "coord_X": -1,
-        "coord_Y": 0,
+        "coord_X": 2,
+        "coord_Y": 3,
         "path_NN": "NN_none.json",
         "connections": [
           "ladder_2"
@@ -59,34 +64,14 @@
     ],
     [
       {
+        "header": "bedroom_1",
         "name": "bedroom_1",
         "room_type": "bedroom",
         "coord_X": 0,
         "coord_Y": 0,
-        "path_NN": "NN_second.json",
-        "connections": [
-          "bedroom_2"
-        ],
-        "devices": [
-          {
-            "device_type": "counter"
-          },
-          {
-            "device_type": "thermometer"
-          },
-          {
-            "device_type": "conditioner"
-          }
-        ]
-      },
-      {
-        "name": "bedroom_2",
-        "room_type": "bedroom",
-        "coord_X": 5,
-        "coord_Y": 0,
         "path_NN": "NN_third.json",
         "connections": [
-          "bedroom_1"
+          "ladder_2"
         ],
         "devices": [
           {
@@ -101,6 +86,7 @@
         ]
       },
       {
+        "header": "ladder_2",
         "name": "ladder_2",
         "room_type": "ladder",
         "coord_X": -1,

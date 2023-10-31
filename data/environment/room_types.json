@@ -23,6 +23,20 @@
       ]
     },
     {
+      "name": "Кухня",
+      "room_type": "kitchen",
+      "size_X": 3,
+      "size_Y": 3,
+      "furniture": [
+        {
+          "furniture_type": "test",
+          "coord_X": 0,
+          "coord_Y": 0,
+          "rotation": 0
+        }
+      ]
+    },
+    {
       "name": "Спальня",
       "room_type": "bedroom",
       "size_X": 3,

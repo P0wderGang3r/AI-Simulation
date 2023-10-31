@@ -19,6 +19,18 @@ class House (
 
     private val floors = ArrayList<Floor>()
 
+    private val moveNodes = ArrayList<MoveNode>()
+
+    fun genNodes() {
+        for (floor in floors) {
+            for (room in floor.getRooms()) {
+                room.genLocalNodes()
+            }
+        }
+    }
+
+    //--------------------------------------------------------------------------------------------------TEMPERATURE ZONE
+
     fun calculateTemperature() {
         class TempByRoom(val temperature: Double, val room: Room)
 
