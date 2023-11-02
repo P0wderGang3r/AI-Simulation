@@ -2,19 +2,20 @@
   "header": "default",
   "rooms": [
     {
-      "name": "Пустая комната",
+      "header": "Пустая комната",
       "room_type": "empty",
       "size_X": 2,
       "size_Y": 3,
       "furniture": []
     },
     {
-      "name": "Зал",
+      "header": "Зал",
       "room_type": "hall",
       "size_X": 2,
       "size_Y": 5,
       "furniture": [
         {
+          "name": "test",
           "furniture_type": "test",
           "coord_X": 0,
           "coord_Y": 0,
@@ -23,12 +24,13 @@
       ]
     },
     {
-      "name": "Кухня",
+      "header": "Кухня",
       "room_type": "kitchen",
       "size_X": 3,
       "size_Y": 3,
       "furniture": [
         {
+          "name": "test",
           "furniture_type": "test",
           "coord_X": 0,
           "coord_Y": 0,
@@ -37,12 +39,13 @@
       ]
     },
     {
-      "name": "Спальня",
+      "header": "Спальня",
       "room_type": "bedroom",
       "size_X": 3,
       "size_Y": 5,
       "furniture": [
         {
+          "name": "test",
           "furniture_type": "test",
           "coord_X": 0,
           "coord_Y": 0,
@@ -51,7 +54,7 @@
       ]
     },
     {
-      "name": "Лестница",
+      "header": "Лестница",
       "room_type": "ladder",
       "size_X": 1,
       "size_Y": 1,

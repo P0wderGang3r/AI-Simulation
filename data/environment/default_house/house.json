@@ -1,6 +1,7 @@
 {
   "header": "home sweet home",
   "path_NN": "NN_global.json",
+  "path_room_types": "data/environment/room_types.json",
   "floors": [
     [
       {
@@ -9,7 +10,7 @@
         "room_type": "hall",
         "coord_X": 0,
         "coord_Y": 0,
-        "path_NN": "NN_third.json",
+        "path_NN": "data/environment/default_house/NN_first.json",
         "connections": [
           "kitchen",
           "ladder_1"
@@ -32,15 +33,12 @@
         "room_type": "kitchen",
         "coord_X": 2,
         "coord_Y": 0,
-        "path_NN": "NN_first.json",
+        "path_NN": "data/environment/default_house/NN_second.json",
         "connections": [
           "hall",
           "ladder_1"
         ],
         "devices": [
-          {
-            "device_type": "counter"
-          },
           {
             "device_type": "thermometer"
           },
@@ -53,9 +51,9 @@
         "header": "ladder_1",
         "name": "ladder_1",
         "room_type": "ladder",
-        "coord_X": 2,
+        "coord_X": 3,
         "coord_Y": 3,
-        "path_NN": "NN_none.json",
+        "path_NN": "data/environment/default_house/NN_none.json",
         "connections": [
           "ladder_2"
         ],
@@ -64,22 +62,16 @@
     ],
     [
       {
-        "header": "bedroom_1",
-        "name": "bedroom_1",
+        "header": "bedroom",
+        "name": "bedroom",
         "room_type": "bedroom",
         "coord_X": 0,
         "coord_Y": 0,
-        "path_NN": "NN_third.json",
+        "path_NN": "data/environment/default_house/NN_third.json",
         "connections": [
           "ladder_2"
         ],
         "devices": [
-          {
-            "device_type": "counter"
-          },
-          {
-            "device_type": "thermometer"
-          },
           {
             "device_type": "conditioner"
           }
@@ -89,9 +81,9 @@
         "header": "ladder_2",
         "name": "ladder_2",
         "room_type": "ladder",
-        "coord_X": -1,
-        "coord_Y": 0,
-        "path_NN": "NN_none.json",
+        "coord_X": 3,
+        "coord_Y": 3,
+        "path_NN": "data/environment/default_house/NN_none.json",
         "connections": [
           "ladder_1"
         ],

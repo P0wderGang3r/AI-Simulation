@@ -2,6 +2,7 @@ package environment.backrooms.classes
 
 import environment.backrooms.json.jRoom
 import environment.backrooms.json.jRoomType
+import environment.householders.Householder
 import environment.network.enums.ErrorType
 
 class Floor (
@@ -19,10 +20,10 @@ class Floor (
         return ErrorType.OK
     }
 
-    fun genFloor(floorJSON: Array<jRoom>): ErrorType {
+    fun genFloor(floorJSON: Array<jRoom>, householders: ArrayList<Householder>): ErrorType {
         for (roomJSON in floorJSON) {
             val room = Room()
-            room.genRoom(roomJSON)
+            room.genRoom(roomJSON, number, householders)
             rooms.add(room)
         }
 

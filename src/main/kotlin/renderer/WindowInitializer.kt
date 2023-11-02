@@ -10,12 +10,17 @@ import org.lwjgl.system.MemoryStack
 import org.lwjgl.system.MemoryUtil
 import renderer.SceneGlobals.rotationStatus
 import renderer.initializers.SceneController
+import runtime.Runtime
+import java.lang.Thread.sleep
+import kotlin.math.tan
 
-class WindowInitializer {
+class WindowInitializer (
+    val runtime: Runtime
+) {
     // The window handle
     private var window: Long = 0
     fun run() {
-        println("Hello LWJGL " + Version.getVersion() + "!")
+        println("LWJGL: " + Version.getVersion())
         init()
         loop()
 
@@ -26,6 +31,20 @@ class WindowInitializer {
         // Terminate GLFW and free the error callback
         GLFW.glfwTerminate()
         GLFW.glfwSetErrorCallback(null)!!.free()
+    }
+
+    fun floorEdit(delta: Int) {
+        if (SceneMemory.currentFloor + delta > 0)
+            if (SceneMemory.currentFloor + delta < 3)
+                SceneMemory.currentFloor += delta
+    }
+
+    fun rotate(rotationStatus: Float, delta: Float): Float {
+        if (rotationStatus + delta > 1.6)
+            if (rotationStatus + delta < 2.4)
+                return rotationStatus + delta
+
+        return rotationStatus
     }
 
     private fun init() {
@@ -42,19 +61,30 @@ class WindowInitializer {
         GLFW.glfwWindowHint(GLFW.GLFW_RESIZABLE, GLFW.GLFW_TRUE) // the window will be resizable
 
         // Create the window
-        window = GLFW.glfwCreateWindow(600, 600, "Hello World!", MemoryUtil.NULL, MemoryUtil.NULL)
+        window = GLFW.glfwCreateWindow(1280, 720, "AI_Lab", MemoryUtil.NULL, MemoryUtil.NULL)
         if (window == MemoryUtil.NULL) throw RuntimeException("Failed to create the GLFW window")
 
         // Setup a key callback. It will be called every time a key is pressed, repeated or released.
         GLFW.glfwSetKeyCallback(window) {
             window: Long, key: Int, scancode: Int, action: Int, mods: Int ->
             if (key == GLFW.GLFW_KEY_ESCAPE && action == GLFW.GLFW_RELEASE) GLFW.glfwSetWindowShouldClose(window, true)
-            if (key == GLFW.GLFW_KEY_LEFT && action == GLFW.GLFW_REPEAT) rotationStatus[1] -= 0.05f
-            if (key == GLFW.GLFW_KEY_RIGHT && action == GLFW.GLFW_REPEAT) rotationStatus[1] += 0.05f
-            if (key == GLFW.GLFW_KEY_W && action == GLFW.GLFW_REPEAT) rotationStatus[2] -= 0.05f
-            if (key == GLFW.GLFW_KEY_S && action == GLFW.GLFW_REPEAT) rotationStatus[2] += 0.05f
+
+            if (key == GLFW.GLFW_KEY_W && action == GLFW.GLFW_REPEAT)
+                rotationStatus[2] = rotate(rotationStatus[2], -0.05f)
+            if (key == GLFW.GLFW_KEY_S && action == GLFW.GLFW_REPEAT)
+                rotationStatus[2] = rotate(rotationStatus[2], 0.05f)
             if (key == GLFW.GLFW_KEY_A && action == GLFW.GLFW_REPEAT) rotationStatus[0] -= 0.05f
             if (key == GLFW.GLFW_KEY_D && action == GLFW.GLFW_REPEAT) rotationStatus[0] += 0.05f
+
+            if (key == GLFW.GLFW_KEY_UP && action == GLFW.GLFW_RELEASE) floorEdit(1)
+            if (key == GLFW.GLFW_KEY_DOWN && action == GLFW.GLFW_RELEASE) floorEdit(-1)
+
+            if (key == GLFW.GLFW_KEY_R && action == GLFW.GLFW_RELEASE) runtime.requestRun()
+            if (key == GLFW.GLFW_KEY_P && action == GLFW.GLFW_RELEASE) runtime.requestPause()
+            if (key == GLFW.GLFW_KEY_EQUAL && action == GLFW.GLFW_RELEASE)
+                runtime.getSimParams().setSimTickDelay(runtime.getSimParams().getSimTickDelay() * 2)
+            if (key == GLFW.GLFW_KEY_MINUS && action == GLFW.GLFW_RELEASE)
+                    runtime.getSimParams().setSimTickDelay(runtime.getSimParams().getSimTickDelay() / 2)
         }
         MemoryStack.stackPush().use { stack ->
             val pWidth = stack.mallocInt(1) // int*
@@ -83,6 +113,7 @@ class WindowInitializer {
         GLFW.glfwShowWindow(window)
     }
 
+
     private fun loop() {
         // This line is critical for LWJGL's interoperation with GLFW's
         // OpenGL context, or any context that is managed externally.
@@ -90,8 +121,9 @@ class WindowInitializer {
         // creates the GLCapabilities instance and makes the OpenGL
         // bindings available for use.
         GL.createCapabilities()
-        SceneController.mapInitialize("test_map")
+        SceneController.mapInitialize("default_outdoor")
 
+        println(SceneGlobals.sceneColorR)
         // Set the clear color
         GL20.glClearColor(
             SceneGlobals.sceneColorR,
@@ -100,7 +132,10 @@ class WindowInitializer {
             1f
         )
 
-        //GL20.glEnable(GL20.GL_BLEND)
+        while (SceneMemory.outdoor == null)
+            sleep(10)
+
+        GL20.glMatrixMode(GL20.GL_PROJECTION)
         GL20.glEnable(GL20.GL_DEPTH_TEST)
         GL20.glDepthFunc(GL20.GL_LESS)
 
@@ -108,9 +143,8 @@ class WindowInitializer {
         // the window or has pressed the ESCAPE key.
         while (!GLFW.glfwWindowShouldClose(window)) {
             GL20.glClear(GL20.GL_COLOR_BUFFER_BIT or GL20.GL_DEPTH_BUFFER_BIT) // clear the framebuffer
-            GL20.glMatrixMode(GL20.GL_MODELVIEW);
 
-            SceneLoop.renderMap()
+            SceneLoop.renderer()
 
             GLFW.glfwSwapBuffers(window) // swap the color buffers
 
@@ -118,5 +152,7 @@ class WindowInitializer {
             // invoked during this call.
             GLFW.glfwPollEvents()
         }
+
+        runtime.requestStop()
     }
 }

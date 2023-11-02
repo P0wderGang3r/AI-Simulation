@@ -1,5 +1,7 @@
 package renderer
 
+import environment.backrooms.classes.House
+import environment.outdoors.classes.Outdoor
 import renderer.classes.ComplexModel
 import renderer.classes.Model
 import renderer.classes.Texture
@@ -20,4 +22,10 @@ object SceneMemory {
     //------------------------------------------МОДЕЛИ----------------------------------------------
     @JvmField
     var models: ArrayList<Model>? = null
+
+    //-------------------------------------------ДОМ------------------------------------------------
+    @JvmField
+    var outdoor: Outdoor? = null
+
+    var currentFloor = 1
 }

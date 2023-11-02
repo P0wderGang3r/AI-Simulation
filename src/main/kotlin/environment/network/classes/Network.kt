@@ -7,18 +7,25 @@ import environment.network.enums.ActivationFunction
 import environment.network.enums.ErrorType
 import environment.network.json.jNetwork
 import java.io.File
+import kotlin.math.abs
 import kotlin.math.pow
 
 class Network {
     private var header = ""
     private val network = ArrayList<Layer>()
 
+    var numberOfTries = 0.0
+    var numberOfSuccess = 0.0
+
     //-> обратное распространение ошибки
 
     /**
      * Прямое распространение сигнала в нейронной сети
      */
-    fun doFullCycle(input: ArrayList<Double>): ArrayList<Double> {
+    fun deepResolving(input: ArrayList<Double>): ArrayList<Double> {
+        if (network.size == 0)
+            return arrayListOf(-1.0)
+
         for (index in 0 until network[0].neurons.size) {
             network[0].neurons[index].setSignal(input[index])
         }
@@ -57,8 +64,22 @@ class Network {
      * @param input Ожидаемый результат работы нейронной сети
      */
     fun deepLearning(referenceOutput: ArrayList<Double>, layerNumber: Int) {
+        if (network.size == 0)
+            return
 
-        if (layerNumber == network.size - 1) {
+        if (layerNumber >= network.size - 1) {
+            numberOfTries += 1
+
+            if (abs(referenceOutput[0] - network[layerNumber].neurons[0].pushSignal()) < 0.00000001 ) {
+                numberOfSuccess += 1.0
+            }
+
+            println("Tries: ${numberOfTries}, NN: ${header}, Estimated success: ${numberOfSuccess / numberOfTries}")
+
+            if (numberOfTries > 100) {
+                numberOfTries = 0.0
+                numberOfSuccess = 0.0
+            }
 
             val currentLayer = network[layerNumber].neurons
 
@@ -119,6 +140,7 @@ class Network {
         return when (activation) {
             "none" -> ActivationFunction.NONE
             "threshold" -> ActivationFunction.THRESHOLD
+            "relu" -> ActivationFunction.RELU
             else -> ActivationFunction.NONE
         }
     }

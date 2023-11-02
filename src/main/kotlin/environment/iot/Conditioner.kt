@@ -8,20 +8,15 @@ class Conditioner(
     override val room: Room,
     override val type: DeviceType
 ): Thing {
-    private var currentTemperature = 24.0
+    private var currentTemperature = 16.0
 
-    fun increaseTemperature() {
-        currentTemperature += 1
-    }
-
-    fun decreaseTemperature() {
-        currentTemperature -= 1
-    }
+    var isEnabled = false
 
     fun getCurrentTemperature(): Double = currentTemperature
 
-    override fun doTheWork(): Double {
-        room.changeTemperature(TemperatureSource.ROOM, currentTemperature)
+    override fun doTheWork(input: Any): Double {
+        if (isEnabled)
+            room.changeTemperature(TemperatureSource.ROOM, currentTemperature)
 
         return currentTemperature
     }

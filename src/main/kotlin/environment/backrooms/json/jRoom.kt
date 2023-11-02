@@ -11,7 +11,6 @@ class jRoom (
     val coord_Y: Int,
     val path_NN: String,
     val connections: Array<String>,
-    val devices: Array<jDevice>,
-    val furniture: jFurniture
+    val devices: Array<jDevice>
 ){
 }

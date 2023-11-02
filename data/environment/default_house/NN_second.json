@@ -5,6 +5,72 @@
       "learnable": false,
       "neurons":[
         {
+          "name" : "day_0001",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name" : "day_0010",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name" : "day_0100",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name" : "day_1000",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name" : "hour_0000001",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name" : "hour_0000010",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name" : "hour_0000100",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name" : "hour_0001000",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name" : "hour_0010000",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name" : "hour_0100000",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
+          "name" : "hour_1000000",
+          "synapses": [],
+          "activation": "none",
+          "parameters": []
+        },
+        {
           "name" : "temp_0001",
           "synapses": [],
           "activation": "none",
@@ -27,82 +93,46 @@
           "synapses": [],
           "activation": "none",
           "parameters": []
-        },
-        {
-          "name" : "req_mode_01",
-          "synapses": [],
-          "activation": "none",
-          "parameters": []
-        },
-        {
-          "name" : "req_mode_10",
-          "synapses": [],
-          "activation": "none",
-          "parameters": []
-        },
-        {
-          "name" : "con_mode_01",
-          "synapses": [],
-          "activation": "none",
-          "parameters": []
-        },
-        {
-          "name" : "con_mode_10",
-          "synapses": [],
-          "activation": "none",
-          "parameters": []
         }
       ]
     },
     {
       "learnable": true,
-      "neurons":[
+      "neurons": [
         {
-          "name" : "temp_req_mode_01",
+          "name" : "day",
           "synapses": [
-            "req_mode_01",
-            "temp_0001",
-            "temp_0010",
-            "temp_0100",
-            "temp_1000"
+            "day_0001",
+            "day_0010",
+            "day_0100",
+            "day_1000"
           ],
-          "activation": "threshold",
+          "activation": "relu",
           "parameters": [0.5]
         },
         {
-          "name" : "temp_req_mode_10",
+          "name" : "hour",
           "synapses": [
-            "req_mode_10",
-            "temp_0001",
-            "temp_0010",
-            "temp_0100",
-            "temp_1000"
+            "hour_0000001",
+            "hour_0000010",
+            "hour_0000100",
+            "hour_0001000",
+            "hour_0010000",
+            "hour_0100000",
+            "hour_1000000"
           ],
-          "activation": "threshold",
+          "activation": "relu",
           "parameters": [0.5]
         },
         {
-          "name" : "temp_con_mode_01",
+          "name" : "temp",
           "synapses": [
-            "con_mode_01",
             "temp_0001",
             "temp_0010",
             "temp_0100",
             "temp_1000"
           ],
-          "activation": "threshold",
-          "parameters": [0.5]
-        },
-        {
-          "name" : "temp_con_mode_10",
-          "synapses": [
-            "con_mode_10",
-            "temp_0001",
-            "temp_0010",
-            "temp_0100",
-            "temp_1000"
-          ],
-          "activation": "threshold",
+          "activation": "relu",
           "parameters": [0.5]
         }
       ]
@@ -111,21 +141,13 @@
       "learnable": true,
       "neurons": [
         {
-          "name" : "res_mode_01",
+          "name": "result",
           "synapses": [
-            "temp_req_mode_01",
-            "temp_con_mode_01"
+            "day",
+            "hour",
+            "temp"
           ],
-          "activation": "threshold",
-          "parameters": [0.5]
-        },
-        {
-          "name" : "res_mode_10",
-          "synapses": [
-            "temp_req_mode_10",
-            "temp_con_mode_10"
-          ],
-          "activation": "threshold",
+          "activation": "relu",
           "parameters": [0.5]
         }
       ]

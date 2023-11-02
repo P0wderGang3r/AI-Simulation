@@ -7,5 +7,5 @@ interface Thing {
     val type: DeviceType
     val room: Room
 
-    fun doTheWork(): Double
+    fun doTheWork(input: Any): Double
 }

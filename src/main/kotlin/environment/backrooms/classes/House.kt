@@ -3,6 +3,7 @@ package environment.backrooms.classes
 import environment.backrooms.json.jHouse
 import environment.backrooms.json.jRoomTypes
 import environment.globals.TemperatureSource
+import environment.householders.Householder
 import jsonParser
 import kotlinx.serialization.decodeFromString
 import environment.network.classes.Network
@@ -19,6 +20,8 @@ class House (
 
     private val floors = ArrayList<Floor>()
 
+    fun getFloors(): ArrayList<Floor> = floors
+
     private val moveNodes = ArrayList<MoveNode>()
 
     fun addConnectionNode(connection: RoomConnection, nodes: ArrayList<MoveNode>) {
@@ -26,7 +29,7 @@ class House (
             if (connection.coord_X_1 == node.coord_X && connection.coord_Y_1 == node.coord_Y) {
                 for (connNode in nodes) {
                     if (connection.coord_X_2 == connNode.coord_X && connection.coord_Y_2 == connNode.coord_Y) {
-                        println("Connected ${node.room.header} and ${connNode.room.header}")
+                        //println("Connected ${node.room.header} and ${connNode.room.header}")
                         node.connectedNodes.add(connNode)
                     }
                 }
@@ -60,7 +63,7 @@ class House (
 
     //--------------------------------------------------------------------------------------------------TEMPERATURE ZONE
 
-    fun calculateTemperature() {
+    fun calculateTemperature(householders: ArrayList<Householder>) {
         class TempByRoom(val temperature: Double, val room: Room)
 
         for (floor in floors) {
@@ -76,6 +79,9 @@ class House (
                 //Меняем температуру в комнате в соответствии с температурой окружающей среды
                 room.changeTemperature(TemperatureSource.OUTSIDE, outdoor.getWeather().getCurrentTemperature())
 
+                //Добавляем температуру в комнате на некоторый коэффициент
+                room.changeTemperature(TemperatureSource.RADIATOR, 40.0)
+
                 //Меняем температуру в комнате в соответствии с другими комнатами на текущем этаже
                 for (temperatureByRoom in temperaturesByRoom) {
                     if (temperatureByRoom.room != room)
@@ -84,6 +90,17 @@ class House (
                             temperatureByRoom.temperature
                         )
                 }
+
+                //Влияние человека на температуру в комнате
+                for (householder in householders) {
+                    if (householder.currentRoom == room) {
+                        room.changeTemperature(TemperatureSource.HUMAN, 36.6)
+                    }
+                }
+
+                //Оказываем влияние на температуру кондиционерами
+                for (conditioner in room.conditioners)
+                    conditioner.doTheWork(-1)
             }
         }
     }
@@ -150,7 +167,7 @@ class House (
         return result
     }
 
-    fun funHouseGen(path: String): ErrorType {
+    fun funHouseGen(path: String, householders: ArrayList<Householder>): ErrorType {
 
         val parseResult = parseHouse(path)
         if (parseResult != ErrorType.OK) {
@@ -165,10 +182,12 @@ class House (
         var index = 1
         for (floorJSON in jHouseJSON.floors) {
             val floor = Floor(index)
-            floor.genFloor(floorJSON)
+            floor.genFloor(floorJSON, householders)
             floors.add(floor)
             index++
         }
+
+        genFloorRoomsByType(jHouseJSON.path_room_types)
 
         genNodes()
 

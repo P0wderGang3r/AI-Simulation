@@ -7,7 +7,7 @@ class Thermometer(
     override val room: Room,
     override val type: DeviceType
 ) : Thing {
-    override fun doTheWork(): Double {
+    override fun doTheWork(input: Any): Double {
         return room.getTemperature()
     }
 }

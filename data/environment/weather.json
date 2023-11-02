@@ -7,12 +7,22 @@
         {
           "hour": 0,
           "minute": 0,
-          "temperature": 24
+          "temperature": 18
+        },
+        {
+          "hour": 6,
+          "minute": 0,
+          "temperature": 21
         },
         {
           "hour": 12,
           "minute": 0,
-          "temperature": 30
+          "temperature": 24
+        },
+        {
+          "hour": 18,
+          "minute": 0,
+          "temperature": 21
         }
       ]
     }

@@ -2,7 +2,7 @@ package runtime
 
 class RuntimeParams {
     //-----------------------------------------------------------------------------КОЛИЧЕСТВО ТАКТОВ СИМУЛЯЦИИ В СЕКУНДУ
-    private var simTickDelay: Long = 50
+    private var simTickDelay: Long = 500
 
     fun getSimTickDelay(): Long = simTickDelay
 

@@ -15,7 +15,7 @@ class EnvGlobals {
     //---------------------------------------------------------------------------------------ИЗМЕНЕНИЕ ВРЕМЕНИ СИМУЛЯЦИИ
 
     //In milliseconds
-    private var deltaTime: Double = 1.0
+    private var deltaTime: Double = 900000.0
 
     fun getDeltaTime(): Double = deltaTime
 

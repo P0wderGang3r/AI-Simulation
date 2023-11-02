@@ -1,6 +1,10 @@
 package runtime
 
-class Runtime: Runnable {
+import environment.Environment
+
+class Runtime (
+    val environment: Environment
+): Runnable {
 
     private val runtimeParams: RuntimeParams = RuntimeParams()
 
@@ -70,7 +74,8 @@ class Runtime: Runnable {
      * Выполнение следующего такта работы симуляции
      */
     private fun nextTick() = Runnable {
-        println("WORK TICK")
+        environment.nextTick()
+        //println("SIM TICK")
 
         runtimeState = when (runtimeState) {
             RuntimeState.RUNNING -> RuntimeState.READY

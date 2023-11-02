@@ -64,7 +64,7 @@ class Texture(
         val bytes: ByteArray
 
         try {
-            println(pathToTexture)
+            //println(pathToTexture)
             bytes = Files.readAllBytes(Paths.get(pathToTexture!!))
             for (j in 0 until height) {
                 for (i in 0 until width) {
