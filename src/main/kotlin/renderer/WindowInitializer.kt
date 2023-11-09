@@ -33,13 +33,13 @@ class WindowInitializer (
         GLFW.glfwSetErrorCallback(null)!!.free()
     }
 
-    fun floorEdit(delta: Int) {
+    private fun floorEdit(delta: Int) {
         if (SceneMemory.currentFloor + delta > 0)
             if (SceneMemory.currentFloor + delta < 3)
                 SceneMemory.currentFloor += delta
     }
 
-    fun rotate(rotationStatus: Float, delta: Float): Float {
+    private fun rotate(rotationStatus: Float, delta: Float): Float {
         if (rotationStatus + delta > 1.6)
             if (rotationStatus + delta < 2.4)
                 return rotationStatus + delta
@@ -82,9 +82,9 @@ class WindowInitializer (
             if (key == GLFW.GLFW_KEY_R && action == GLFW.GLFW_RELEASE) runtime.requestRun()
             if (key == GLFW.GLFW_KEY_P && action == GLFW.GLFW_RELEASE) runtime.requestPause()
             if (key == GLFW.GLFW_KEY_EQUAL && action == GLFW.GLFW_RELEASE)
-                runtime.getSimParams().setSimTickDelay(runtime.getSimParams().getSimTickDelay() * 2)
+                runtime.getSimParams().setSimTickDelay(runtime.getSimParams().getSimTickDelay() / 2)
             if (key == GLFW.GLFW_KEY_MINUS && action == GLFW.GLFW_RELEASE)
-                    runtime.getSimParams().setSimTickDelay(runtime.getSimParams().getSimTickDelay() / 2)
+                    runtime.getSimParams().setSimTickDelay(runtime.getSimParams().getSimTickDelay() * 2)
         }
         MemoryStack.stackPush().use { stack ->
             val pWidth = stack.mallocInt(1) // int*

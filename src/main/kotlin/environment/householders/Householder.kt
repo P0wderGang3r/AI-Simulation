@@ -89,6 +89,9 @@ interface Householder {
             }
         }
 
+        coord_X = ((Math.random() * 10) % currentRoom.roomPreset.size_X).toInt()
+        coord_Y = ((Math.random() * 10) % currentRoom.roomPreset.size_Y).toInt()
+
         currentRoom.enterHandler()
     }
 

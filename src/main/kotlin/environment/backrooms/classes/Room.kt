@@ -2,10 +2,10 @@ package environment.backrooms.classes
 
 import environment.backrooms.json.jDevice
 import environment.backrooms.json.jRoom
-import environment.backrooms.json.jRoomType
+import environment.backrooms.json.jRoomPreset
+import environment.backrooms.json.jRoomPresets
 import environment.globals.TemperatureSource
 import environment.globals.DeviceType
-import environment.householders.Householder
 import environment.iot.Conditioner
 import environment.iot.Counter
 import environment.iot.Thermometer
@@ -28,23 +28,18 @@ class Room {
 
     var roomTypeString: String = ""
 
-    var roomType = RoomType()
+    var roomPreset = RoomPreset()
 
     var connections = ArrayList<RoomConnection>()
 
     var connectionsString = ArrayList<String>()
 
-    val height = 2.0
-
-    var roomFloorNum = 1
-
-    //Костыль, дабы не париться с поиском случайных координат для текущей вариации жителей
-    val localNodes = ArrayList<MoveNode>()
-
     val lastControlActions = ArrayList<Int>()
 
+    lateinit var tileModel: TileModel
+
     fun doNNResolve(day: Double) {
-        if (day < 1.0)
+        if (day < 15.0)
             return
 
         if (abs(localNNResolve[0] - 1.0) < 0.00000001) {
@@ -115,10 +110,16 @@ class Room {
     //------------------------------------------------------------------------------------------------------HANDLER ZONE
 
     fun enterHandler() {
-
+        for (counter in counters) {
+            counter.doTheWork(1)
+        }
     }
 
     fun leaveHandler() {
+        for (counter in counters) {
+            counter.doTheWork(-1)
+        }
+
         if (Math.random() > 0.1) {
             for (conditioner in conditioners) {
                 conditioner.isEnabled = false
@@ -128,196 +129,33 @@ class Room {
 
     //-----------------------------------------------------------------------------------------------ЗОНА ГЕНЕРАЦИИ СТЕН
 
-    val lowWallModel = ArrayList<Array<Float>>()
+    fun getFloorModel() = tileModel.floorModel
 
-    val wallModel = ArrayList<Array<Float>>()
+    fun getWallModel() = tileModel.wallModel
 
-    val wallColor = arrayOf(0.847f, 0.741f, 0.624f)
+    fun getLowWallModel() = tileModel.lowWallModel
 
-    val floorModel = ArrayList<Array<Float>>()
+    fun getWallColor() = tileModel.getWallColor()
 
-    private val floorColor = arrayOf(0.457f, 0.375f, 0.316f)
-
-    fun getFloorColor(): Array<Float> {
-        val deltaTemperature = 20 - temperature
-
-        return arrayOf(
-            floorColor[0] + (0 - deltaTemperature.toFloat() * 0.1f),
-            floorColor[1],
-            floorColor[2] + (deltaTemperature.toFloat() * 0.1f)
-        )
-    }
-
-    fun genFloor() {
-        //Нижний левый угол
-        floorModel.add(arrayOf(coord_X.toFloat(), coord_Y.toFloat(), roomFloorNum * height.toFloat()))
-        //Верхний левый угол
-        floorModel.add(arrayOf(coord_X.toFloat(), (coord_Y + roomType.size_Y).toFloat(), roomFloorNum * height.toFloat()))
-        //Нижний правый угол
-        floorModel.add(arrayOf((coord_X + roomType.size_X).toFloat(), coord_Y.toFloat(), roomFloorNum * height.toFloat()))
-
-        //Верхний правый угол
-        floorModel.add(arrayOf((coord_X + roomType.size_X).toFloat(), (coord_Y + roomType.size_Y).toFloat(), roomFloorNum * height.toFloat()))
-        //Верхний левый угол
-        floorModel.add(arrayOf(coord_X.toFloat(), (coord_Y + roomType.size_Y).toFloat(), roomFloorNum * height.toFloat()))
-        //Нижний правый угол
-        floorModel.add(arrayOf((coord_X + roomType.size_X).toFloat(), coord_Y.toFloat(), roomFloorNum * height.toFloat()))
-    }
-
-    fun genLowWalls() {
-        //Верхняя стена
-        for (size_X in 0 until roomType.size_X) {
-            //Нижний левый угол
-            lowWallModel.add(arrayOf((size_X + coord_X).toFloat(), coord_Y.toFloat(), roomFloorNum * height.toFloat()))
-            //Верхний левый угол
-            lowWallModel.add(arrayOf((size_X + coord_X).toFloat(), coord_Y.toFloat(), (0.1f + roomFloorNum) * height.toFloat()))
-            //Нижний правый угол
-            lowWallModel.add(arrayOf((size_X + coord_X + 1).toFloat(), coord_Y.toFloat(), roomFloorNum * height.toFloat()))
-
-            //Верхний правый угол
-            lowWallModel.add(arrayOf((size_X + coord_X + 1).toFloat(), coord_Y.toFloat(), (0.1f + roomFloorNum) * height.toFloat()))
-            //Верхний левый угол
-            lowWallModel.add(arrayOf((size_X + coord_X).toFloat(), coord_Y.toFloat(), (0.1f + roomFloorNum) * height.toFloat()))
-            //Нижний правый угол
-            lowWallModel.add(arrayOf((size_X + coord_X + 1).toFloat(), coord_Y.toFloat(), roomFloorNum * height.toFloat()))
-        }
-
-        //Нижняя стена
-        for (size_X in 0 until roomType.size_X) {
-            //Нижний левый угол
-            lowWallModel.add(arrayOf((size_X + coord_X).toFloat(), (coord_Y + roomType.size_Y).toFloat(), roomFloorNum * height.toFloat()))
-            //Верхний левый угол
-            lowWallModel.add(arrayOf((size_X + coord_X).toFloat(), (coord_Y + roomType.size_Y).toFloat(), (0.1f + roomFloorNum) * height.toFloat()))
-            //Нижний правый угол
-            lowWallModel.add(arrayOf((size_X + coord_X + 1).toFloat(), (coord_Y + roomType.size_Y).toFloat(), roomFloorNum * height.toFloat()))
-
-            //Верхний правый угол
-            lowWallModel.add(arrayOf((size_X + coord_X + 1).toFloat(), (coord_Y + roomType.size_Y).toFloat(), (0.1f + roomFloorNum) * height.toFloat()))
-            //Верхний левый угол
-            lowWallModel.add(arrayOf((size_X + coord_X).toFloat(), (coord_Y + roomType.size_Y).toFloat(), (0.1f + roomFloorNum) * height.toFloat()))
-            //Нижний правый угол
-            lowWallModel.add(arrayOf((size_X + coord_X + 1).toFloat(), (coord_Y + roomType.size_Y).toFloat(), roomFloorNum * height.toFloat()))
-        }
-
-        for (size_Y in 0 until roomType.size_Y) {
-            //Нижний левый угол
-            lowWallModel.add(arrayOf(coord_X.toFloat(), (size_Y + coord_Y).toFloat(), roomFloorNum * height.toFloat()))
-            //Верхний левый угол
-            lowWallModel.add(arrayOf(coord_X.toFloat(), (size_Y + coord_Y).toFloat(), (0.1f + roomFloorNum) * height.toFloat()))
-            //Нижний правый угол
-            lowWallModel.add(arrayOf(coord_X.toFloat(), (size_Y + coord_Y + 1).toFloat(), roomFloorNum * height.toFloat()))
-
-            //Верхний правый угол
-            lowWallModel.add(arrayOf(coord_X.toFloat(), (size_Y + coord_Y + 1).toFloat(), (0.1f + roomFloorNum) * height.toFloat()))
-            //Верхний левый угол
-            lowWallModel.add(arrayOf(coord_X.toFloat(), (size_Y + coord_Y).toFloat(), (0.1f + roomFloorNum) * height.toFloat()))
-            //Нижний правый угол
-            lowWallModel.add(arrayOf(coord_X.toFloat(), (size_Y + coord_Y + 1).toFloat(), roomFloorNum * height.toFloat()))
-        }
-
-        for (size_Y in 0 until roomType.size_Y) {
-            //Нижний левый угол
-            lowWallModel.add(arrayOf((coord_X + roomType.size_X).toFloat(), (size_Y + coord_Y).toFloat(), roomFloorNum * height.toFloat()))
-            //Верхний левый угол
-            lowWallModel.add(arrayOf((coord_X + roomType.size_X).toFloat(), (size_Y + coord_Y).toFloat(), (0.1f + roomFloorNum) * height.toFloat()))
-            //Нижний правый угол
-            lowWallModel.add(arrayOf((coord_X + roomType.size_X).toFloat(), (size_Y + coord_Y + 1).toFloat(), roomFloorNum * height.toFloat()))
-
-            //Верхний правый угол
-            lowWallModel.add(arrayOf((coord_X + roomType.size_X).toFloat(), (size_Y + coord_Y + 1).toFloat(), (0.1f + roomFloorNum) * height.toFloat()))
-            //Верхний левый угол
-            lowWallModel.add(arrayOf((coord_X + roomType.size_X).toFloat(), (size_Y + coord_Y).toFloat(), (0.1f + roomFloorNum) * height.toFloat()))
-            //Нижний правый угол
-            lowWallModel.add(arrayOf((coord_X + roomType.size_X).toFloat(), (size_Y + coord_Y + 1).toFloat(), roomFloorNum * height.toFloat()))
-        }
-    }
-
-    fun genWalls() {
-        //Верхняя стена
-        for (size_X in 0 until roomType.size_X) {
-            //Нижний левый угол
-            wallModel.add(arrayOf((size_X + coord_X).toFloat(), coord_Y.toFloat(), roomFloorNum * height.toFloat()))
-            //Верхний левый угол
-            wallModel.add(arrayOf((size_X + coord_X).toFloat(), coord_Y.toFloat(), (1 + roomFloorNum) * height.toFloat()))
-            //Нижний правый угол
-            wallModel.add(arrayOf((size_X + coord_X + 1).toFloat(), coord_Y.toFloat(), roomFloorNum * height.toFloat()))
-
-            //Верхний правый угол
-            wallModel.add(arrayOf((size_X + coord_X + 1).toFloat(), coord_Y.toFloat(), (1 + roomFloorNum) * height.toFloat()))
-            //Верхний левый угол
-            wallModel.add(arrayOf((size_X + coord_X).toFloat(), coord_Y.toFloat(), (1 + roomFloorNum) * height.toFloat()))
-            //Нижний правый угол
-            wallModel.add(arrayOf((size_X + coord_X + 1).toFloat(), coord_Y.toFloat(), roomFloorNum * height.toFloat()))
-        }
-
-        //Нижняя стена
-        for (size_X in 0 until roomType.size_X) {
-            //Нижний левый угол
-            wallModel.add(arrayOf((size_X + coord_X).toFloat(), (coord_Y + roomType.size_Y).toFloat(), roomFloorNum * height.toFloat()))
-            //Верхний левый угол
-            wallModel.add(arrayOf((size_X + coord_X).toFloat(), (coord_Y + roomType.size_Y).toFloat(), (1 + roomFloorNum) * height.toFloat()))
-            //Нижний правый угол
-            wallModel.add(arrayOf((size_X + coord_X + 1).toFloat(), (coord_Y + roomType.size_Y).toFloat(), roomFloorNum * height.toFloat()))
-
-            //Верхний правый угол
-            wallModel.add(arrayOf((size_X + coord_X + 1).toFloat(), (coord_Y + roomType.size_Y).toFloat(), (1 + roomFloorNum) * height.toFloat()))
-            //Верхний левый угол
-            wallModel.add(arrayOf((size_X + coord_X).toFloat(), (coord_Y + roomType.size_Y).toFloat(), (1 + roomFloorNum) * height.toFloat()))
-            //Нижний правый угол
-            wallModel.add(arrayOf((size_X + coord_X + 1).toFloat(), (coord_Y + roomType.size_Y).toFloat(), roomFloorNum * height.toFloat()))
-        }
-
-        for (size_Y in 0 until roomType.size_Y) {
-            //Нижний левый угол
-            wallModel.add(arrayOf(coord_X.toFloat(), (size_Y + coord_Y).toFloat(), roomFloorNum * height.toFloat()))
-            //Верхний левый угол
-            wallModel.add(arrayOf(coord_X.toFloat(), (size_Y + coord_Y).toFloat(), (1 + roomFloorNum) * height.toFloat()))
-            //Нижний правый угол
-            wallModel.add(arrayOf(coord_X.toFloat(), (size_Y + coord_Y + 1).toFloat(), roomFloorNum * height.toFloat()))
-
-            //Верхний правый угол
-            wallModel.add(arrayOf(coord_X.toFloat(), (size_Y + coord_Y + 1).toFloat(), (1 + roomFloorNum) * height.toFloat()))
-            //Верхний левый угол
-            wallModel.add(arrayOf(coord_X.toFloat(), (size_Y + coord_Y).toFloat(), (1 + roomFloorNum) * height.toFloat()))
-            //Нижний правый угол
-            wallModel.add(arrayOf(coord_X.toFloat(), (size_Y + coord_Y + 1).toFloat(), roomFloorNum * height.toFloat()))
-        }
-
-        for (size_Y in 0 until roomType.size_Y) {
-            //Нижний левый угол
-            wallModel.add(arrayOf((coord_X + roomType.size_X).toFloat(), (size_Y + coord_Y).toFloat(), roomFloorNum * height.toFloat()))
-            //Верхний левый угол
-            wallModel.add(arrayOf((coord_X + roomType.size_X).toFloat(), (size_Y + coord_Y).toFloat(), (1 + roomFloorNum) * height.toFloat()))
-            //Нижний правый угол
-            wallModel.add(arrayOf((coord_X + roomType.size_X).toFloat(), (size_Y + coord_Y + 1).toFloat(), roomFloorNum * height.toFloat()))
-
-            //Верхний правый угол
-            wallModel.add(arrayOf((coord_X + roomType.size_X).toFloat(), (size_Y + coord_Y + 1).toFloat(), (1 + roomFloorNum) * height.toFloat()))
-            //Верхний левый угол
-            wallModel.add(arrayOf((coord_X + roomType.size_X).toFloat(), (size_Y + coord_Y).toFloat(), (1 + roomFloorNum) * height.toFloat()))
-            //Нижний правый угол
-            wallModel.add(arrayOf((coord_X + roomType.size_X).toFloat(), (size_Y + coord_Y + 1).toFloat(), roomFloorNum * height.toFloat()))
-        }
-    }
+    fun getFloorColor() = tileModel.getFloorColor(temperature)
 
     //-----------------------------------------------------------------------------------ЗОНА ГЕНЕРАЦИИ МЕСТ ПЕРЕМЕЩЕНИЯ
 
     fun genLocalNodes(): ArrayList<MoveNode> {
         val localMoveNodes = ArrayList<ArrayList<MoveNode>>()
 
-        for (xIndex in 0 until roomType.size_X) {
+        for (xIndex in 0 until roomPreset.size_X) {
             localMoveNodes.add(ArrayList())
-            for (yIndex in 0 until roomType.size_Y) {
+            for (yIndex in 0 until roomPreset.size_Y) {
                 //Новосозданная нода
                 val localMoveNode = MoveNode(xIndex + coord_X, yIndex + coord_Y, this)
 
                 localMoveNodes[xIndex].add(localMoveNode)
-                localNodes.add(localMoveNode)
 
                 //Составляю карту окрестности нода перемещения
                 for (xOcclusionIndex in -1 .. 1) {
                     //Проверка, что соседняя нода по координате X находится в пределах комнаты
-                    if (xIndex + xOcclusionIndex !in 0 until roomType.size_X) {
+                    if (xIndex + xOcclusionIndex !in 0 until roomPreset.size_X) {
                         continue
                     }
 
@@ -327,7 +165,7 @@ class Room {
                             continue
 
                         //Проверка, что соседняя нода по координате Y находится в пределах комнаты
-                        if (yIndex + yOcclusionIndex !in 0 until roomType.size_Y) {
+                        if (yIndex + yOcclusionIndex !in 0 until roomPreset.size_Y) {
                             continue
                         }
 
@@ -369,23 +207,6 @@ class Room {
         temperature += (sourceTemperature - temperature) * coefficient
     }
 
-
-    fun genRoomByType(roomTypesJSON: Array<jRoomType>): ErrorType {
-        for (roomTypeJSON in roomTypesJSON) {
-            if (roomTypeString == roomTypeJSON.room_type) {
-                roomType.genRoomType(roomTypeJSON)
-            }
-        }
-
-        genWalls()
-
-        genLowWalls()
-
-        genFloor()
-
-        return ErrorType.OK
-    }
-
     //------------------------------------------------------------------------------------------------------DEVICES ZONE
 
     val conditioners = ArrayList<Conditioner>()
@@ -394,7 +215,7 @@ class Room {
 
     val counters = ArrayList<Counter>()
 
-    fun genDevices(devicesJSON: Array<jDevice>, householders: ArrayList<Householder>) {
+    fun genDevices(devicesJSON: Array<jDevice>) {
         conditioners.clear()
         thermometers.clear()
         counters.clear()
@@ -402,7 +223,7 @@ class Room {
             when (deviceJSON.device_type) {
                 "thermometer" -> thermometers.add(Thermometer(this, DeviceType.THERMOMETER))
                 "conditioner" -> conditioners.add(Conditioner(this, DeviceType.CONDITIONER))
-                "counter" -> counters.add(Counter(this, DeviceType.CONDITIONER, householders))
+                "counter" -> counters.add(Counter(this, DeviceType.COUNTER))
             }
         }
     }
@@ -423,19 +244,29 @@ class Room {
 
     //-----------------------------------------------------------------------------------------------INITIALIZATION ZONE
 
-    fun genRoom(roomJSON: jRoom, roomFloorNum: Int, householders: ArrayList<Householder>): ErrorType {
+    fun genRoom(housePath: String, roomJSON: jRoom, roomPresetsJSON: jRoomPresets, roomFloorNum: Int): ErrorType {
         this.header = roomJSON.header
         this.name = roomJSON.name
         this.coord_X = roomJSON.coord_X
         this.coord_Y = roomJSON.coord_Y
-        this.roomTypeString = roomJSON.room_type
+        this.roomTypeString = roomJSON.room_preset
         this.connectionsString.addAll(roomJSON.connections)
 
-        this.roomFloorNum = roomFloorNum
+        localNN.genNeuralNetwork("${housePath}/${roomJSON.path_NN}")
 
-        localNN.genNeuralNetwork(roomJSON.path_NN)
+        genDevices(roomJSON.devices)
 
-        genDevices(roomJSON.devices, householders)
+        for (roomTypeJSON in roomPresetsJSON.rooms) {
+            if (roomTypeString == roomTypeJSON.room_preset) {
+                roomPreset.genRoomType(roomTypeJSON)
+            }
+        }
+
+        val height = 2.0
+        tileModel = TileModel(coord_X, coord_Y, roomFloorNum, height, roomPreset)
+        tileModel.genFloor()
+        tileModel.genWalls()
+        tileModel.genLowWalls()
 
         return ErrorType.OK
     }

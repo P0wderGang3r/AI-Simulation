@@ -12,4 +12,4 @@ val logs = booleanArrayOf(
     false
 )
 
-var data_path: String = "data/"
+var data_path: String = "./data"

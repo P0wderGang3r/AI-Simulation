@@ -1,0 +1,50 @@
+{
+  "name": "householder_1",
+  "scale_X": 0.1,
+  "scale_Y": 0.1,
+  "scale_Z": 0.1,
+  "complexes": [
+    {
+      "model": "cone",
+      "texture": "default",
+      "scale_X": 0.0,
+      "scale_Y": 0.0,
+      "scale_Z": 0.0,
+      "color_R": 127,
+      "color_G": 127,
+      "color_B": 127,
+      "joints": [
+        {
+          "name": "joint_1",
+          "coord_X": 0.5,
+          "coord_Y": 0.5,
+          "coord_Z": 1.0
+        }
+      ]
+    },
+    {
+      "model": "cuboid",
+      "texture": "default",
+      "scale_X": 0.0,
+      "scale_Y": 0.0,
+      "scale_Z": 0.0,
+      "color_R": 127,
+      "color_G": 127,
+      "color_B": 127,
+      "joints": [
+        {
+          "name": "joint_2",
+          "coord_X": 0.5,
+          "coord_Y": 0.5,
+          "coord_Z": 0.0
+        }
+      ]
+    }
+  ],
+  "inner_joints": [
+    {
+      "joint_parent": "joint_1",
+      "joint_child": "joint_2"
+    }
+  ]
+}

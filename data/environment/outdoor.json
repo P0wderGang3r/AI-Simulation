@@ -1,6 +1,7 @@
 {
   "header": "default",
-  "path_weather": "data/environment/weather.json",
-  "path_house": "data/environment/default_house/house.json",
+  "path_weather": "weather.json",
+  "path_house": "default_house",
+  "path_room_presets": "room_presets.json",
   "path_outdoor_map": "default_map"
 }

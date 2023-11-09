@@ -1,16 +1,15 @@
 {
   "header": "home sweet home",
   "path_NN": "NN_global.json",
-  "path_room_types": "data/environment/room_types.json",
   "floors": [
     [
       {
         "header": "hall",
         "name": "hall",
-        "room_type": "hall",
+        "room_preset": "hall",
         "coord_X": 0,
         "coord_Y": 0,
-        "path_NN": "data/environment/default_house/NN_first.json",
+        "path_NN": "NN_first.json",
         "connections": [
           "kitchen",
           "ladder_1"
@@ -30,10 +29,10 @@
       {
         "header": "kitchen",
         "name": "kitchen",
-        "room_type": "kitchen",
+        "room_preset": "kitchen",
         "coord_X": 2,
         "coord_Y": 0,
-        "path_NN": "data/environment/default_house/NN_second.json",
+        "path_NN": "NN_second.json",
         "connections": [
           "hall",
           "ladder_1"
@@ -50,10 +49,10 @@
       {
         "header": "ladder_1",
         "name": "ladder_1",
-        "room_type": "ladder",
+        "room_preset": "ladder",
         "coord_X": 3,
         "coord_Y": 3,
-        "path_NN": "data/environment/default_house/NN_none.json",
+        "path_NN": "NN_none.json",
         "connections": [
           "ladder_2"
         ],
@@ -64,10 +63,10 @@
       {
         "header": "bedroom",
         "name": "bedroom",
-        "room_type": "bedroom",
+        "room_preset": "bedroom",
         "coord_X": 0,
         "coord_Y": 0,
-        "path_NN": "data/environment/default_house/NN_third.json",
+        "path_NN": "NN_third.json",
         "connections": [
           "ladder_2"
         ],
@@ -80,10 +79,10 @@
       {
         "header": "ladder_2",
         "name": "ladder_2",
-        "room_type": "ladder",
+        "room_preset": "ladder",
         "coord_X": 3,
         "coord_Y": 3,
-        "path_NN": "data/environment/default_house/NN_none.json",
+        "path_NN": "NN_none.json",
         "connections": [
           "ladder_1"
         ],

@@ -11,12 +11,12 @@ class Environment {
     //Указатель на outdoor
     lateinit var outdoor: Outdoor
     
-    fun initEnvironment(path: String) {
+    fun initEnvironment(dataPath: String) {
         //создание глобальных переменных окружения
         envGlobals = EnvGlobals()
         //генерация Outdoor
         outdoor = Outdoor(envGlobals)
-        outdoor.genOutdoor(path)
+        outdoor.genOutdoor("$dataPath/environment")
         SceneMemory.outdoor = outdoor
     }
     

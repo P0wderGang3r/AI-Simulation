@@ -1,0 +1,22 @@
+{
+  "modelsDir": "data/models",
+  "texturesDir": "data/textures",
+  "models": [
+    {
+      "name": "cone",
+      "path": "cone.model"
+    },
+    {
+      "name": "cuboid",
+      "path": "cuboid.model"
+    }
+  ],
+  "textures": [
+    {
+      "name": "default",
+      "path": "defaulttex.data",
+      "width": 5,
+      "height": 5
+    }
+  ]
+}

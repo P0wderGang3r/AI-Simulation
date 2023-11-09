@@ -7,21 +7,28 @@ import environment.householders.Householder1
 
 class Counter(
     override val room: Room,
-    override val type: DeviceType,
-    householders: ArrayList<Householder>
+    override val type: DeviceType
 ): Thing {
-    private var householders = ArrayList<Householder>()
+    private var countedHouseholders = 0
     override fun doTheWork(input: Any): Double {
-        var counter = 0.0
-        for (householder in householders) {
-            if (householder.currentRoom == room) {
-                counter += 1
-            }
-        }
-        return counter
-    }
+        val change = input as Int
 
-    init {
-        this.householders.addAll(householders)
+        if (change == 0) {
+            countedHouseholders = 0
+        }
+        if (change == -1) {
+            if (countedHouseholders > 0)
+                countedHouseholders -= 1
+        }
+
+        if (change == 1) {
+            countedHouseholders += 1
+        }
+
+        if (change > 1) {
+            countedHouseholders = change
+        }
+
+        return countedHouseholders.toDouble()
     }
 }

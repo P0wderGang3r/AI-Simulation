@@ -1,7 +1,7 @@
 package environment.backrooms.classes
 
 import environment.backrooms.json.jHouse
-import environment.backrooms.json.jRoomTypes
+import environment.backrooms.json.jRoomPresets
 import environment.globals.TemperatureSource
 import environment.householders.Householder
 import jsonParser
@@ -105,45 +105,7 @@ class House (
         }
     }
 
-    //---------------------------------------------------------------------------------------------FLOOR GENERATION ZONE
-
-    private fun parseRoomTypes(path: String): ErrorType {
-
-        val jsonText: String
-        try {
-            val file = File(path)
-            jsonText = file.readText()
-        } catch (_: Exception) {
-            return ErrorType.IOError
-        }
-
-        val jRoomTypesDesc: jRoomTypes
-        try {
-            jRoomTypesDesc = jsonParser.decodeFromString(jsonText)
-        } catch (_: Exception) {
-            return ErrorType.ParseError
-        }
-
-        val result = ErrorType.OK
-        result.data = jRoomTypesDesc
-        return result
-    }
-
-    private fun genFloorRoomsByType(path: String): ErrorType {
-        val parseResult = parseRoomTypes(path)
-        if (parseResult != ErrorType.OK) {
-            return parseResult
-        }
-        val jRoomTypesJSON = parseResult.data as jRoomTypes
-
-        for (floor in floors) {
-            floor.genRoomsByType(jRoomTypesJSON.rooms)
-        }
-
-        return ErrorType.OK
-    }
-
-    //House generation------------------
+    //--------------------------------------------------------------------------------------------------House generation
 
     private fun parseHouse(path: String): ErrorType {
 
@@ -167,9 +129,9 @@ class House (
         return result
     }
 
-    fun funHouseGen(path: String, householders: ArrayList<Householder>): ErrorType {
+    fun funHouseGen(housePath: String, roomPresetsJSON: jRoomPresets): ErrorType {
 
-        val parseResult = parseHouse(path)
+        val parseResult = parseHouse("$housePath/house.json")
         if (parseResult != ErrorType.OK) {
             return parseResult
         }
@@ -177,17 +139,15 @@ class House (
 
         header = jHouseJSON.header
 
-        globalNN.genNeuralNetwork(jHouseJSON.path_NN)
+        globalNN.genNeuralNetwork("$housePath/jHouseJSON.path_NN")
 
         var index = 1
         for (floorJSON in jHouseJSON.floors) {
             val floor = Floor(index)
-            floor.genFloor(floorJSON, householders)
+            floor.genFloor(housePath, floorJSON, roomPresetsJSON)
             floors.add(floor)
             index++
         }
-
-        genFloorRoomsByType(jHouseJSON.path_room_types)
 
         genNodes()
 

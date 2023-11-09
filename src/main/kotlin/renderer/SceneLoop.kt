@@ -14,12 +14,12 @@ object SceneLoop {
             for (room in floor.getRooms()) {
 
                 val wallColor = arrayOf(
-                    room.wallColor[0] + ((floor.number - 1) * 0.1f),
-                    room.wallColor[1] + ((floor.number - 1) * 0.1f),
-                    room.wallColor[2] + ((floor.number - 1) * 0.1f))
+                    room.getWallColor()[0] + ((floor.number - 1) * 0.1f),
+                    room.getWallColor()[1] + ((floor.number - 1) * 0.1f),
+                    room.getWallColor()[2] + ((floor.number - 1) * 0.1f))
 
                 GL20.glColor3f(wallColor[0], wallColor[1], wallColor[2])
-                for (wallModel in room.lowWallModel) {
+                for (wallModel in room.getLowWallModel()) {
                     currentPolygon.add(wallModel.toFloatArray())
                     if (currentPolygon.size == 3) {
                         GL20.glBegin(GL20.GL_TRIANGLES)
@@ -70,12 +70,12 @@ object SceneLoop {
             for (room in floor.getRooms()) {
 
                 val wallColor = arrayOf(
-                    room.wallColor[0] + ((floor.number - 1) * 0.1f),
-                    room.wallColor[1] + ((floor.number - 1) * 0.1f),
-                    room.wallColor[2] + ((floor.number - 1) * 0.1f))
+                    room.getWallColor()[0] + ((floor.number - 1) * 0.1f),
+                    room.getWallColor()[1] + ((floor.number - 1) * 0.1f),
+                    room.getWallColor()[2] + ((floor.number - 1) * 0.1f))
 
                 GL20.glColor3f(wallColor[0], wallColor[1], wallColor[2])
-                for (wallModel in room.wallModel) {
+                for (wallModel in room.getWallModel()) {
                     currentPolygon.add(wallModel.toFloatArray())
                     if (currentPolygon.size == 3) {
                         GL20.glBegin(GL20.GL_TRIANGLES)
@@ -121,7 +121,7 @@ object SceneLoop {
 
                 val floorColor = room.getFloorColor()
                 GL20.glColor3f(floorColor[0], floorColor[1], floorColor[2])
-                for (floorModel in room.floorModel) {
+                for (floorModel in room.getFloorModel()) {
                     currentPolygon.add(floorModel.toFloatArray())
                     if (currentPolygon.size == 3) {
                         GL20.glBegin(GL20.GL_TRIANGLES)

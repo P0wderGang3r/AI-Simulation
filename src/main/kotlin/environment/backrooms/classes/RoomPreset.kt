@@ -1,11 +1,10 @@
 package environment.backrooms.classes
 
-import environment.backrooms.json.jDevice
 import environment.backrooms.json.jFurniture
-import environment.backrooms.json.jRoomType
+import environment.backrooms.json.jRoomPreset
 import environment.network.enums.ErrorType
 
-class RoomType {
+class RoomPreset {
     var header: String = "Empty"
 
     var size_X: Int = 1
@@ -21,7 +20,7 @@ class RoomType {
         }
     }
 
-    fun genRoomType(roomTypeJSON: jRoomType): ErrorType {
+    fun genRoomType(roomTypeJSON: jRoomPreset): ErrorType {
         this.header = roomTypeJSON.header
         this.size_X = roomTypeJSON.size_X
         this.size_Y = roomTypeJSON.size_Y

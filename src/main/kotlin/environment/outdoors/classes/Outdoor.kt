@@ -1,6 +1,7 @@
 package environment.outdoors.classes
 
 import environment.backrooms.classes.House
+import environment.backrooms.json.jRoomPresets
 import environment.globals.EnvGlobals
 import environment.householders.Householder
 import environment.householders.Householder1
@@ -31,12 +32,35 @@ class Outdoor(
         householders.add(Householder3(house.getFloors()[0].getRooms()[2], householders))
     }
 
+    //-------------------------------------------------------------------------------------------------ROOM PRESETS ZONE
+
+    private fun parseRoomPresets(path: String): ErrorType {
+
+        val jsonText: String
+        try {
+            val file = File(path)
+            jsonText = file.readText()
+        } catch (_: Exception) {
+            return ErrorType.IOError
+        }
+
+        val jRoomPresetsDesc: jRoomPresets
+        try {
+            jRoomPresetsDesc = jsonParser.decodeFromString(jsonText)
+        } catch (_: Exception) {
+            return ErrorType.ParseError
+        }
+
+        val result = ErrorType.OK
+        result.data = jRoomPresetsDesc
+        return result
+    }
+
     //-------------------------------------------------------------------------------------------------------------House
 
     private val house = House(this)
 
     fun getHouse() = house
-
 
     //------------------------------------------------------------------------------------------------------WEATHER ZONE
 
@@ -76,21 +100,29 @@ class Outdoor(
         return result
     }
 
-    fun genOutdoor(path: String): ErrorType {
+    fun genOutdoor(environmentPath: String): ErrorType {
 
-        val parseResult = parseOutdoor(path)
+        println("$environmentPath/outdoor.json")
+        val parseResult = parseOutdoor("$environmentPath/outdoor.json")
         if (parseResult != ErrorType.OK) {
             return parseResult
         }
         val jOutdoorJSON = parseResult.data as jOutdoor
 
+
+        val parseRoomPresetsResult = parseRoomPresets("$environmentPath/${jOutdoorJSON.path_room_presets}")
+        if (parseRoomPresetsResult != ErrorType.OK) {
+            return parseRoomPresetsResult
+        }
+        val jRoomPresetsJSON = parseRoomPresetsResult.data as jRoomPresets
+
         header = jOutdoorJSON.header
 
-        house.funHouseGen(jOutdoorJSON.path_house, householders)
+        house.funHouseGen("$environmentPath/${jOutdoorJSON.path_house}", jRoomPresetsJSON)
 
         initHouseholders()
 
-        weather.genWeather(jOutdoorJSON.path_weather)
+        weather.genWeather("$environmentPath/${jOutdoorJSON.path_weather}")
 
         for (temperature in weather.getTemperatures()) {
             for (localTemp in temperature.temperatures)

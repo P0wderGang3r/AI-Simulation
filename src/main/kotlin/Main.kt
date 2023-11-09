@@ -5,11 +5,9 @@ import renderer.WindowInitializer
 import runtime.Runtime
 
 fun main(args: Array<String>) {
-    var path: String = ""
-
     for (index in args.indices) {
         if (args[index] == "--base" && index < args.size - 1) {
-            path = args[index + 1]
+            data_path = args[index + 1]
         }
     }
 
@@ -18,7 +16,7 @@ fun main(args: Array<String>) {
     println("Args: ${args.joinToString()}\n")
 
     val environment = Environment()
-    environment.initEnvironment("./data/environment/outdoor.json")
+    environment.initEnvironment(data_path)
 
     val runtime = Runtime(environment)
     Thread(runtime).start()
@@ -27,9 +25,12 @@ fun main(args: Array<String>) {
     windowInitializer.run()
 }
 
-
-//TODO: случайное место человека в комнате
-
 //TODO: модель человека
+
+//TODO: оценка качества работы нейронной сети
+
+//TODO: тайловый рендеринг земли
+
+//TODO: облака
 
 //TODO: Исправить ошибку конкуренции данных ErrorType

@@ -3,7 +3,7 @@ package environment.backrooms.json
 import kotlinx.serialization.Serializable
 
 @Serializable
-class jRoomTypes (
+class jRoomPresets (
     val header: String,
-    val rooms: Array<jRoomType>
+    val rooms: Array<jRoomPreset>
 )

@@ -76,7 +76,7 @@ class Network {
 
             println("Tries: ${numberOfTries}, NN: ${header}, Estimated success: ${numberOfSuccess / numberOfTries}")
 
-            if (numberOfTries > 100) {
+            if (numberOfTries > 1000) {
                 numberOfTries = 0.0
                 numberOfSuccess = 0.0
             }
