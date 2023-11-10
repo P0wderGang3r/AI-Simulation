@@ -6,5 +6,4 @@ import kotlinx.serialization.Serializable
 class jDay (
     val day: Int,
     val temperatures: Array<jTemperature>
-){
-}
+)

@@ -14,6 +14,10 @@ override val householders: ArrayList<Householder>
 
     override var coord_Y: Int = 0
 
+    override var accumulatedMood: Int = 0
+
+    override var numberOfTries: Int = 0
+
     //Матрица переходов
     override val dayTimeMovementMatrix: Array<DoubleArray> =
         arrayOf(

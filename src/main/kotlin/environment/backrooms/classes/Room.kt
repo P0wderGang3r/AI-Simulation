@@ -2,10 +2,9 @@ package environment.backrooms.classes
 
 import environment.backrooms.json.jDevice
 import environment.backrooms.json.jRoom
-import environment.backrooms.json.jRoomPreset
 import environment.backrooms.json.jRoomPresets
-import environment.globals.TemperatureSource
 import environment.globals.DeviceType
+import environment.globals.TemperatureSource
 import environment.iot.Conditioner
 import environment.iot.Counter
 import environment.iot.Thermometer

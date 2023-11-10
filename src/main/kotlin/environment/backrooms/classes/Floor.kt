@@ -1,7 +1,6 @@
 package environment.backrooms.classes
 
 import environment.backrooms.json.jRoom
-import environment.backrooms.json.jRoomPreset
 import environment.backrooms.json.jRoomPresets
 import environment.network.enums.ErrorType
 

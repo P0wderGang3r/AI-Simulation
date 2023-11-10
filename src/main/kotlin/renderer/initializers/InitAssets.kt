@@ -1,16 +1,15 @@
 package renderer.initializers
 
+import environment.network.enums.ErrorType
 import jsonParser
 import kotlinx.serialization.decodeFromString
-import environment.network.enums.ErrorType
 import renderer.SceneMemory
+import renderer.classes.Model
+import renderer.classes.Texture
 import renderer.json.jAssets
 import renderer.json.jModel
 import renderer.json.jTexture
-import renderer.classes.Model
-import renderer.classes.Texture
 import java.io.File
-import java.util.ArrayList
 
 object InitAssets {
 

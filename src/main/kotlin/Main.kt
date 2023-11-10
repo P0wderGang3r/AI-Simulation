@@ -1,6 +1,4 @@
 import environment.Environment
-import environment.globals.DateTime
-import environment.network.classes.Network
 import renderer.WindowInitializer
 import runtime.Runtime
 
@@ -26,8 +24,6 @@ fun main(args: Array<String>) {
 }
 
 //TODO: модель человека
-
-//TODO: оценка качества работы нейронной сети
 
 //TODO: тайловый рендеринг земли
 

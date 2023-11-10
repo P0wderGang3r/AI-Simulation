@@ -12,5 +12,4 @@ class jRoom (
     val path_NN: String,
     val connections: Array<String>,
     val devices: Array<jDevice>
-){
-}
+)

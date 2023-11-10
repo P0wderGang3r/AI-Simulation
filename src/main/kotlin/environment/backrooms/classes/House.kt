@@ -4,11 +4,11 @@ import environment.backrooms.json.jHouse
 import environment.backrooms.json.jRoomPresets
 import environment.globals.TemperatureSource
 import environment.householders.Householder
-import jsonParser
-import kotlinx.serialization.decodeFromString
 import environment.network.classes.Network
 import environment.network.enums.ErrorType
 import environment.outdoors.classes.Outdoor
+import jsonParser
+import kotlinx.serialization.decodeFromString
 import java.io.File
 
 class House (

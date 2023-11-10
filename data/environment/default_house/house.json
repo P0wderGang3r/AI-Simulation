@@ -50,7 +50,7 @@
         "header": "ladder_1",
         "name": "ladder_1",
         "room_preset": "ladder",
-        "coord_X": 3,
+        "coord_X": 2,
         "coord_Y": 3,
         "path_NN": "NN_none.json",
         "connections": [
@@ -80,7 +80,7 @@
         "header": "ladder_2",
         "name": "ladder_2",
         "room_preset": "ladder",
-        "coord_X": 3,
+        "coord_X": 2,
         "coord_Y": 3,
         "path_NN": "NN_none.json",
         "connections": [

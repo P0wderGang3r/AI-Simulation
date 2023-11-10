@@ -1,7 +1,6 @@
 package environment.network.classes
 
 import environment.network.enums.ActivationFunction
-import kotlin.math.pow
 
 class Neuron (
     val name: String = "",

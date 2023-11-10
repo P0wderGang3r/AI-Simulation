@@ -12,15 +12,15 @@ object MapTransformations {
         )
     }
 
-    fun move1D(coords: FloatArray, floor: Int): FloatArray {
+    fun move1D(coords: FloatArray, move_Z: Float): FloatArray {
         return floatArrayOf(
             coords[0],
             coords[1],
-            coords[2]
+            coords[2] + move_Z
         )
     }
 
-    fun resize3D(coordinates: FloatArray, size: Array<Float>): FloatArray {
+    fun resize3D(coordinates: FloatArray, size: FloatArray): FloatArray {
         return floatArrayOf(
             coordinates[0] * size[0],
             coordinates[1] * size[1],

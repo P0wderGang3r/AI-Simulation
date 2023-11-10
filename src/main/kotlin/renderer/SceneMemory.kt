@@ -1,19 +1,23 @@
 package renderer
 
-import environment.backrooms.classes.House
 import environment.outdoors.classes.Outdoor
-import renderer.classes.ComplexModel
 import renderer.classes.Model
 import renderer.classes.Texture
+import renderer.classes.TexturedModel
+import renderer.computations.PerspectiveConversions
 
 object SceneMemory {
+    //--------------------------------ПЕРСПЕКТИВНЫЕ ПРЕОБРАЗОВАНИЯ----------------------------------
+
+    var PerspectiveConversions: PerspectiveConversions? = null
+
     //---------------------------------------НАЗВАНИЕ КАРТЫ-----------------------------------------
     @JvmField
     var mapName: String? = null
 
     //------------------------------------НАБОР ОБЪЕКТОВ СЦЕНЫ--------------------------------------
     @JvmField
-    var complexModels: ArrayList<ComplexModel>? = null
+    var texturedModels: ArrayList<TexturedModel>? = null
 
     //-----------------------------------------ТЕКСТУРЫ---------------------------------------------
     @JvmField

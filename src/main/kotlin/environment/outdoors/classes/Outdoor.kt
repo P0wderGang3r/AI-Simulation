@@ -7,10 +7,10 @@ import environment.householders.Householder
 import environment.householders.Householder1
 import environment.householders.Householder2
 import environment.householders.Householder3
+import environment.network.enums.ErrorType
 import environment.outdoors.json.jOutdoor
 import jsonParser
 import kotlinx.serialization.decodeFromString
-import environment.network.enums.ErrorType
 import java.io.File
 
 class Outdoor(
@@ -101,8 +101,6 @@ class Outdoor(
     }
 
     fun genOutdoor(environmentPath: String): ErrorType {
-
-        println("$environmentPath/outdoor.json")
         val parseResult = parseOutdoor("$environmentPath/outdoor.json")
         if (parseResult != ErrorType.OK) {
             return parseResult
@@ -124,10 +122,12 @@ class Outdoor(
 
         weather.genWeather("$environmentPath/${jOutdoorJSON.path_weather}")
 
+        /*
         for (temperature in weather.getTemperatures()) {
             for (localTemp in temperature.temperatures)
             println("${temperature.day} ${localTemp.hour} ${localTemp.minute} ${localTemp.temperature}")
         }
+         */
 
 
         return ErrorType.OK

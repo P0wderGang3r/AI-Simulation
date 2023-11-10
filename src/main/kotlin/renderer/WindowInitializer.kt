@@ -1,6 +1,5 @@
 package renderer
 
-import org.lwjgl.Version
 import org.lwjgl.glfw.Callbacks
 import org.lwjgl.glfw.GLFW
 import org.lwjgl.glfw.GLFWErrorCallback
@@ -9,10 +8,10 @@ import org.lwjgl.opengl.GL20
 import org.lwjgl.system.MemoryStack
 import org.lwjgl.system.MemoryUtil
 import renderer.SceneGlobals.rotationStatus
+import renderer.computations.PerspectiveConversions
 import renderer.initializers.SceneController
 import runtime.Runtime
 import java.lang.Thread.sleep
-import kotlin.math.tan
 
 class WindowInitializer (
     val runtime: Runtime
@@ -20,7 +19,6 @@ class WindowInitializer (
     // The window handle
     private var window: Long = 0
     fun run() {
-        println("LWJGL: " + Version.getVersion())
         init()
         loop()
 
@@ -48,6 +46,8 @@ class WindowInitializer (
     }
 
     private fun init() {
+        val width = 1280
+        val height = 720
         // Setup an error callback. The default implementation
         // will print the error message in System.err.
         GLFWErrorCallback.createPrint(System.err).set()
@@ -61,7 +61,7 @@ class WindowInitializer (
         GLFW.glfwWindowHint(GLFW.GLFW_RESIZABLE, GLFW.GLFW_TRUE) // the window will be resizable
 
         // Create the window
-        window = GLFW.glfwCreateWindow(1280, 720, "AI_Lab", MemoryUtil.NULL, MemoryUtil.NULL)
+        window = GLFW.glfwCreateWindow(width, height, "AI_Lab", MemoryUtil.NULL, MemoryUtil.NULL)
         if (window == MemoryUtil.NULL) throw RuntimeException("Failed to create the GLFW window")
 
         // Setup a key callback. It will be called every time a key is pressed, repeated or released.
@@ -70,11 +70,11 @@ class WindowInitializer (
             if (key == GLFW.GLFW_KEY_ESCAPE && action == GLFW.GLFW_RELEASE) GLFW.glfwSetWindowShouldClose(window, true)
 
             if (key == GLFW.GLFW_KEY_W && action == GLFW.GLFW_REPEAT)
-                rotationStatus[2] = rotate(rotationStatus[2], -0.05f)
-            if (key == GLFW.GLFW_KEY_S && action == GLFW.GLFW_REPEAT)
                 rotationStatus[2] = rotate(rotationStatus[2], 0.05f)
-            if (key == GLFW.GLFW_KEY_A && action == GLFW.GLFW_REPEAT) rotationStatus[0] -= 0.05f
-            if (key == GLFW.GLFW_KEY_D && action == GLFW.GLFW_REPEAT) rotationStatus[0] += 0.05f
+            if (key == GLFW.GLFW_KEY_S && action == GLFW.GLFW_REPEAT)
+                rotationStatus[2] = rotate(rotationStatus[2], -0.05f)
+            if (key == GLFW.GLFW_KEY_A && action == GLFW.GLFW_REPEAT) rotationStatus[0] += 0.05f
+            if (key == GLFW.GLFW_KEY_D && action == GLFW.GLFW_REPEAT) rotationStatus[0] -= 0.05f
 
             if (key == GLFW.GLFW_KEY_UP && action == GLFW.GLFW_RELEASE) floorEdit(1)
             if (key == GLFW.GLFW_KEY_DOWN && action == GLFW.GLFW_RELEASE) floorEdit(-1)
@@ -111,6 +111,8 @@ class WindowInitializer (
 
         // Make the window visible
         GLFW.glfwShowWindow(window)
+
+        SceneMemory.PerspectiveConversions = PerspectiveConversions(width, height, -5.0, 5.0, 90.0)
     }
 
 
@@ -142,15 +144,15 @@ class WindowInitializer (
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
         while (!GLFW.glfwWindowShouldClose(window)) {
+            // Poll for window events. The key callback above will only be
+            // invoked during this call.
+            GLFW.glfwPollEvents()
+
             GL20.glClear(GL20.GL_COLOR_BUFFER_BIT or GL20.GL_DEPTH_BUFFER_BIT) // clear the framebuffer
 
             SceneLoop.renderer()
 
             GLFW.glfwSwapBuffers(window) // swap the color buffers
-
-            // Poll for window events. The key callback above will only be
-            // invoked during this call.
-            GLFW.glfwPollEvents()
         }
 
         runtime.requestStop()

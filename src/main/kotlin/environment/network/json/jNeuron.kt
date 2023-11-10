@@ -8,5 +8,4 @@ class jNeuron (
     val synapses: Array<String>,
     val activation: String,
     val parameters: Array<Double>
-) {
-}
+)

@@ -41,8 +41,8 @@
     {
       "header": "Спальня",
       "room_preset": "bedroom",
-      "size_X": 3,
-      "size_Y": 5,
+      "size_X": 5,
+      "size_Y": 3,
       "furniture": [
         {
           "name": "test",

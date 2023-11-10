@@ -10,15 +10,18 @@
       "scale_X": 0.0,
       "scale_Y": 0.0,
       "scale_Z": 0.0,
-      "color_R": 127,
-      "color_G": 127,
-      "color_B": 127,
+      "color_R": 0.5,
+      "color_G": 0.5,
+      "color_B": 0.5,
       "joints": [
         {
           "name": "joint_1",
           "coord_X": 0.5,
           "coord_Y": 0.5,
-          "coord_Z": 1.0
+          "coord_Z": 1.0,
+          "rotation_X": 0.0,
+          "rotation_Y": 0.0,
+          "rotation_Z": 1.0
         }
       ]
     },
@@ -28,15 +31,18 @@
       "scale_X": 0.0,
       "scale_Y": 0.0,
       "scale_Z": 0.0,
-      "color_R": 127,
-      "color_G": 127,
-      "color_B": 127,
+      "color_R": 0.5,
+      "color_G": 0.5,
+      "color_B": 0.5,
       "joints": [
         {
           "name": "joint_2",
           "coord_X": 0.5,
           "coord_Y": 0.5,
-          "coord_Z": 0.0
+          "coord_Z": 0.0,
+          "rotation_X": 0.0,
+          "rotation_Y": 0.0,
+          "rotation_Z": 1.0
         }
       ]
     }

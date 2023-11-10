@@ -24,6 +24,15 @@ interface Householder {
     val dayPreferredCondition: DoubleArray
     val nightPreferredCondition: DoubleArray
 
+    var accumulatedMood: Int
+
+    var numberOfTries: Int
+
+    fun resetAccumulatedMood() {
+        accumulatedMood = 0
+        numberOfTries = 0
+    }
+
     /**
      * @param time Текущий час
      */
@@ -116,15 +125,23 @@ interface Householder {
         if (time > 10 && time < 22)
             isDay = true
 
+        numberOfTries += 1
+
         //Если дневное время суток, то...
         if (isDay) {
             //Если в промежутке приятного пребывания, то повышается настроение
             if (currentRoom.getTemperature() > dayPreferredCondition[0] &&
                 currentRoom.getTemperature() < dayPreferredCondition[1]) {
-                if (mood < 100) mood += 1
+                if (mood < 100) {
+                    mood += 1
+                    accumulatedMood += mood
+                }
             } else {
                 //иначе понижается
-                if (mood > 0) mood -= 1
+                if (mood > 0) {
+                    mood -= 1
+                    accumulatedMood += mood
+                }
                 //Если больше максимального, включаем
                 if (currentRoom.getTemperature() > nightPreferredCondition[1]) {
                     if (checkPriority()) {
@@ -146,9 +163,15 @@ interface Householder {
         } else {
             if (currentRoom.getTemperature() > nightPreferredCondition[0] &&
                 currentRoom.getTemperature() < nightPreferredCondition[1]) {
-                if (mood < 100) mood += 1
+                if (mood < 100) {
+                    mood += 1
+                    accumulatedMood += mood
+                }
             } else {
-                if (mood > 0) mood -= 1
+                if (mood > 0) {
+                    mood -= 1
+                    accumulatedMood += mood
+                }
                 if (currentRoom.getTemperature() > nightPreferredCondition[1]) {
                     if (checkPriority()) {
                         currentRoom.lastControlActions.clear()

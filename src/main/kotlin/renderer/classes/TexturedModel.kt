@@ -1,11 +1,29 @@
 package renderer.classes
 
-class ComplexModel(
+import renderer.json.jJoint
+
+class TexturedModel(
     var model: Model,
     var texture: Texture,
     private val size: Float,
     private val posOfMdl: FloatArray
 ) {
+    private val joints = ArrayList<Joint>()
+
+    fun addJoints(jointsJSON: Array<jJoint>) {
+        for (jointJSON in jointsJSON) {
+            joints.add(
+                Joint(
+                    this,
+                    floatArrayOf(
+                        jointJSON.coord_X.toFloat(),
+                        jointJSON.coord_Y.toFloat(),
+                        jointJSON.coord_Z.toFloat()
+                    )
+            ))
+        }
+    }
+
     fun nextFace(): Array<FloatArray>? {
             val res = Array(3) { FloatArray(3) }
             var vLine: FloatArray

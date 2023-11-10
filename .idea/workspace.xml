@@ -4,35 +4,51 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0370ea2-0878-430f-85d0-6ceae01546e4" name="Changes" comment="Everything is glued">
-      <change afterPath="$PROJECT_DIR$/data/entities/assets.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/entities/entities.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/entities/householders.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/TileModel.kt" afterDir="false" />
+    <list default="true" id="e0370ea2-0878-430f-85d0-6ceae01546e4" name="Changes" comment="Refactor + Human rendering base">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/classes/Entity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/classes/Joint.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/computations/PerspectiveConversions.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/json/jComplexModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/json/jEntities.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/json/jEntity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/json/jEntityPath.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/json/jJoint.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/entities/householder_1.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/entities/householder_1.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/environment/default_house/house.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/environment/default_house/house.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/environment/outdoor.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/environment/outdoor.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/environment/room_types.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/environment/room_presets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Globals.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Globals.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/environment/room_presets.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/environment/room_presets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/maps/default_outdoor/map.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/maps/default_outdoor/map.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/Environment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/Environment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/Floor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/Floor.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/House.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/House.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/Room.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/Room.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/RoomConnection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/RoomConnection.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/RoomType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/classes/RoomPreset.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jHouse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jHouse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jDevice.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jDevice.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jRoom.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jRoom.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jRoomType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jRoomPreset.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jRoomTypes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/backrooms/json/jRoomPresets.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/globals/FurnitureType.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/householders/Householder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/householders/Householder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/householders/Householder1.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/householders/Householder1.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/householders/Householder2.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/householders/Householder2.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/householders/Householder3.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/householders/Householder3.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/iot/Counter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/iot/Counter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/network/classes/Network.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/network/classes/Network.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/network/classes/Neuron.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/network/classes/Neuron.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/network/json/jNetwork.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/network/json/jNetwork.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/network/json/jNeuron.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/network/json/jNeuron.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/classes/Outdoor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/classes/Outdoor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/json/jDay.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/json/jDay.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/json/jOutdoor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/json/jOutdoor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/json/jTemperature.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/json/jTemperature.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/json/jWeather.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/environment/outdoors/json/jWeather.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/renderer/SceneGlobals.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/SceneGlobals.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/renderer/SceneLoop.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/SceneLoop.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/renderer/SceneMemory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/SceneMemory.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/renderer/WindowInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/WindowInitializer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/renderer/classes/ComplexModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/classes/TexturedModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/renderer/classes/Model.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/classes/Model.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/renderer/computations/MapTransformations.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/computations/MapTransformations.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/renderer/initializers/InitAssets.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/initializers/InitAssets.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/renderer/initializers/InitMap.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/initializers/InitMap.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/renderer/initializers/SceneController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/renderer/initializers/SceneController.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,6 +138,7 @@
       <recent name="neural_network.classes" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="renderer.computations" />
       <recent name="simulation" />
     </key>
   </component>
@@ -238,7 +255,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698932038390</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Refactor + Human rendering base">
+      <option name="closed" value="true" />
+      <created>1699565443157</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1699565443157</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -254,7 +279,8 @@
     <MESSAGE value="Move nodes (only local) + Random room connections (AKA doorways)" />
     <MESSAGE value="Move nodes (full house)" />
     <MESSAGE value="Everything is glued" />
-    <option name="LAST_COMMIT_MESSAGE" value="Everything is glued" />
+    <MESSAGE value="Refactor + Human rendering base" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor + Human rendering base" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -2,8 +2,6 @@ package environment.iot
 
 import environment.backrooms.classes.Room
 import environment.globals.DeviceType
-import environment.householders.Householder
-import environment.householders.Householder1
 
 class Counter(
     override val room: Room,

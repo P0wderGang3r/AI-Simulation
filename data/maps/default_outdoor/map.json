@@ -1,6 +1,6 @@
 {
   "parameters": {
-    "scene_size": [0.5, 0, 0],
+    "scene_size": [0.25, 0, 0],
     "scene_displacement": [-2.0, -2.0, -4.0],
     "scene_rotation": [1.4, 0.0, 1.7],
     "scene_ambient_lightning": [0.74, 0.98, 1.0]

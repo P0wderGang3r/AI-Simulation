@@ -1,23 +1,26 @@
 package environment.network.classes
 
-import jsonParser
-import kotlinx.serialization.decodeFromString
-import logs
 import environment.network.enums.ActivationFunction
 import environment.network.enums.ErrorType
 import environment.network.json.jNetwork
+import jsonParser
+import kotlinx.serialization.decodeFromString
+import logs
 import java.io.File
 import kotlin.math.abs
 import kotlin.math.pow
 
 class Network {
-    private var header = ""
+    var header = ""
     private val network = ArrayList<Layer>()
 
     var numberOfTries = 0.0
     var numberOfSuccess = 0.0
 
-    //-> обратное распространение ошибки
+    fun resetTries() {
+        numberOfTries = 0.0
+        numberOfSuccess = 0.0
+    }
 
     /**
      * Прямое распространение сигнала в нейронной сети
@@ -72,13 +75,6 @@ class Network {
 
             if (abs(referenceOutput[0] - network[layerNumber].neurons[0].pushSignal()) < 0.00000001 ) {
                 numberOfSuccess += 1.0
-            }
-
-            println("Tries: ${numberOfTries}, NN: ${header}, Estimated success: ${numberOfSuccess / numberOfTries}")
-
-            if (numberOfTries > 1000) {
-                numberOfTries = 0.0
-                numberOfSuccess = 0.0
             }
 
             val currentLayer = network[layerNumber].neurons

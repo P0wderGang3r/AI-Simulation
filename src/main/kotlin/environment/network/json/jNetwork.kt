@@ -6,5 +6,4 @@ import kotlinx.serialization.Serializable
 class jNetwork (
     val header: String,
     val layers: Array<jLayer>
-) {
-}
+)

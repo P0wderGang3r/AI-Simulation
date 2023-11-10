@@ -1,18 +1,17 @@
 package renderer.initializers
 
+import environment.network.enums.ErrorType
 import jsonParser
 import kotlinx.serialization.decodeFromString
-import environment.network.enums.ErrorType
 import renderer.SceneGlobals
 import renderer.SceneMemory
+import renderer.classes.Model
+import renderer.classes.Texture
+import renderer.classes.TexturedModel
 import renderer.json.jMap
 import renderer.json.jObjects
 import renderer.json.jParameters
-import renderer.classes.ComplexModel
-import renderer.classes.Model
-import renderer.classes.Texture
 import java.io.File
-import java.util.ArrayList
 
 object InitMap {
 
@@ -72,11 +71,11 @@ object InitMap {
 
 
     private fun initSceneObjects(jObjectsJSON: Array<jObjects>) {
-        val complexObjectList = ArrayList<ComplexModel>()
-        SceneMemory.complexModels = complexObjectList
+        val complexObjectList = ArrayList<TexturedModel>()
+        SceneMemory.texturedModels = complexObjectList
 
         for (objectJSON in jObjectsJSON) {
-            val complexObject = ComplexModel(
+            val complexObject = TexturedModel(
                 findModel(objectJSON.model),
                 findTexture(objectJSON.texture),
                 objectJSON.size,

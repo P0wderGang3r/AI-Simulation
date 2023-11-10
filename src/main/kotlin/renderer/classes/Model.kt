@@ -3,7 +3,6 @@ package renderer.classes
 import java.io.IOException
 import java.nio.file.Files
 import java.nio.file.Paths
-import kotlin.collections.ArrayList
 import kotlin.math.abs
 import kotlin.math.max
 

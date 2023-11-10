@@ -26,8 +26,11 @@ object SceneLoop {
                         for (vertex in currentPolygon) {
                             var currentVertex = vertex.clone()
 
-                            //Применяем смещение к вершине
-                            currentVertex = MapTransformations.move1D(currentVertex, SceneMemory.currentFloor)
+                            //Применяем изменение в размерах к вершине
+                            currentVertex = MapTransformations.resize3D(currentVertex, floatArrayOf(0.5f, 0.5f, 0.5f))
+
+                            //Применяем смещение к вершине - сдвигаем на нужную позицию
+                            currentVertex = MapTransformations.move(currentVertex, floatArrayOf(1.0f, 1.0f, 2.05f))
 
                             //Применяем смещение к вершине
                             currentVertex = MapTransformations.move(currentVertex, positionStatus)
@@ -39,13 +42,15 @@ object SceneLoop {
                             currentVertex = MapTransformations.rotate(currentVertex, rotationStatus)
 
                             //Применяем изменение в размерах к вершине
-                            currentVertex = MapTransformations.resize3D(currentVertex, arrayOf(0.5625f, 1.0f, 0.5625f))
+                            //currentVertex = MapTransformations.resize3D(currentVertex, arrayOf(0.5625f, 1.0f, 0.5625f))
+
+                            currentVertex = SceneMemory.PerspectiveConversions!!.getPerspectiveConversions(currentVertex)
 
                             //Добавляем в стек вершину
                             GL20.glVertex3d(
-                                currentVertex[0] * 0.5,
-                                currentVertex[1] * 0.5,
-                                currentVertex[2] * 0.5
+                                currentVertex[0].toDouble(),
+                                currentVertex[1].toDouble(),
+                                currentVertex[2].toDouble()
                             )
                         }
                         currentPolygon.clear()
@@ -82,8 +87,11 @@ object SceneLoop {
                         for (vertex in currentPolygon) {
                             var currentVertex = vertex.clone()
 
-                            //Применяем смещение к вершине
-                            currentVertex = MapTransformations.move1D(currentVertex, SceneMemory.currentFloor)
+                            //Применяем изменение в размерах к вершине
+                            currentVertex = MapTransformations.resize3D(currentVertex, floatArrayOf(0.5f, 0.5f, 0.5f))
+
+                            //Применяем смещение к вершине - сдвигаем на нужную позицию
+                            currentVertex = MapTransformations.move(currentVertex, floatArrayOf(1.0f, 1.0f, 2.05f))
 
                             //Применяем смещение к вершине
                             currentVertex = MapTransformations.move(currentVertex, positionStatus)
@@ -95,13 +103,15 @@ object SceneLoop {
                             currentVertex = MapTransformations.rotate(currentVertex, rotationStatus)
 
                             //Применяем изменение в размерах к вершине
-                            currentVertex = MapTransformations.resize3D(currentVertex, arrayOf(0.5625f, 1.0f, 0.5625f))
+                            //currentVertex = MapTransformations.resize3D(currentVertex, arrayOf(0.5625f, 1.0f, 0.5625f))
+
+                            currentVertex = SceneMemory.PerspectiveConversions!!.getPerspectiveConversions(currentVertex)
 
                             //Добавляем в стек вершину
                             GL20.glVertex3d(
-                                currentVertex[0] * 0.5,
-                                currentVertex[1] * 0.5,
-                                currentVertex[2] * 0.5
+                                currentVertex[0].toDouble(),
+                                currentVertex[1].toDouble(),
+                                currentVertex[2].toDouble()
                             )
                         }
                         currentPolygon.clear()
@@ -128,8 +138,14 @@ object SceneLoop {
                         for (vertex in currentPolygon) {
                             var currentVertex = vertex.clone()
 
+                            //Применяем изменение в размерах к вершине
+                            currentVertex = MapTransformations.resize3D(currentVertex, floatArrayOf(0.5f, 0.5f, 0.5f))
+
+                            //Применяем смещение к вершине - сдвигаем на нужную позицию
+                            currentVertex = MapTransformations.move(currentVertex, floatArrayOf(1.0f, 1.0f, 2.05f))
+
                             //Применяем смещение к вершине
-                            currentVertex = MapTransformations.move1D(currentVertex, SceneMemory.currentFloor)
+                            currentVertex = MapTransformations.move1D(currentVertex, 0.05f)
 
                             //Применяем смещение к вершине
                             currentVertex = MapTransformations.move(currentVertex, positionStatus)
@@ -141,13 +157,15 @@ object SceneLoop {
                             currentVertex = MapTransformations.rotate(currentVertex, rotationStatus)
 
                             //Применяем изменение в размерах к вершине
-                            currentVertex = MapTransformations.resize3D(currentVertex, arrayOf(0.5625f, 1.0f, 0.5625f))
+                            //currentVertex = MapTransformations.resize3D(currentVertex, arrayOf(0.5625f, 1.0f, 0.5625f))
+
+                            currentVertex = SceneMemory.PerspectiveConversions!!.getPerspectiveConversions(currentVertex)
 
                             //Добавляем в стек вершину
                             GL20.glVertex3d(
-                                currentVertex[0] * 0.5,
-                                currentVertex[1] * 0.5,
-                                currentVertex[2] * 0.5
+                                currentVertex[0].toDouble(),
+                                currentVertex[1].toDouble(),
+                                currentVertex[2].toDouble()
                             )
                         }
                         currentPolygon.clear()
@@ -163,7 +181,7 @@ object SceneLoop {
 
     private fun renderOutdoor() {
         //Проходимся по все комплексным моделям сцены
-        for (complexModel in SceneMemory.complexModels!!) {
+        for (complexModel in SceneMemory.texturedModels!!) {
             GL20.glColor3d(0.8, 0.8, 0.8)
 
             var currentPolygon: Array<FloatArray>?
@@ -196,10 +214,12 @@ object SceneLoop {
                     currentPolygon[index] = MapTransformations.rotate(currentPolygon[index], rotationStatus)
 
                     //Применяем изменение в размерах к вершине
-                    currentPolygon[index] = MapTransformations.resize3D(currentPolygon[index], arrayOf(0.5625f, 1.0f, 0.5625f))
+                    //currentPolygon[index] = MapTransformations.resize3D(currentPolygon[index], arrayOf(0.5625f, 1.0f, 0.5625f))
 
                     //Применяем изменение в размерах к вершине
                     currentPolygon[index] = MapTransformations.resize(currentPolygon[index], mapSizeStatus)
+
+                    currentPolygon[index] = SceneMemory.PerspectiveConversions!!.getPerspectiveConversions(currentPolygon[index])
 
                     //Закрепляю за следующей координатой полигона один из углов текстуры
                     GL20.glTexCoord2d(textureCorners[index][0].toDouble(), textureCorners[index][1].toDouble())
